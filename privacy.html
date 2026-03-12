@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — VibeFront</title>
+<meta name="theme-color" content="#0a0a1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#06060f;color:rgba(240,240,245,.8);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:#22d3ee;text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:720px;margin:0 auto;padding:80px 24px}
+h1{font-size:2rem;font-weight:800;color:#f0f0f5;letter-spacing:-.03em;margin-bottom:8px}
+h2{font-size:1.2rem;font-weight:700;color:#f0f0f5;margin-top:36px;margin-bottom:12px}
+p,ul{margin-bottom:16px;font-size:.95rem}
+ul{padding-left:20px}
+li{margin-bottom:6px}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;color:rgba(240,240,245,.4);margin-bottom:32px;font-weight:500}
+.back:hover{color:rgba(240,240,245,.7);text-decoration:none}
+.date{color:rgba(240,240,245,.35);font-size:.85rem;margin-bottom:32px}
+.lang-toggle{position:fixed;top:20px;right:20px;z-index:10000;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:8px 18px;font-size:.82rem;font-weight:600;color:rgba(240,240,245,.55);cursor:pointer;backdrop-filter:blur(12px)}
+.lang-toggle:hover{background:rgba(255,255,255,.12);color:#f0f0f5}
+[data-lang="ja"] .en,[data-lang="en"] .ja{display:none!important}
+</style>
+</head>
+<body data-lang="en">
+
+<button class="lang-toggle" onclick="toggleLang()">
+  <span class="ja">EN</span><span class="en">日本語</span>
+</button>
+
+<div class="container">
+  <a href="index.html" class="back">&larr; <span class="ja">トップに戻る</span><span class="en">Back to Home</span></a>
+
+  <h1><span class="ja">プライバシーポリシー</span><span class="en">Privacy Policy</span></h1>
+  <p class="date"><span class="ja">最終更新: 2026年3月12日</span><span class="en">Last updated: March 12, 2026</span></p>
+
+  <p>
+    <span class="ja">VibeFront（以下「本アプリ」）は、Mojosoft が開発・提供するWindows向けHTMLエディタアプリです。本アプリは、お客様のプライバシーを尊重し、個人情報の保護に努めています。</span>
+    <span class="en">VibeFront ("the App") is a Windows HTML editor application developed by Mojosoft. We respect your privacy and are committed to protecting your personal information.</span>
+  </p>
+
+  <h2><span class="ja">収集する情報</span><span class="en">Information We Collect</span></h2>
+  <p>
+    <span class="ja">本アプリは個人情報を収集しません。</span>
+    <span class="en">The App does not collect any personal information.</span>
+  </p>
+  <ul>
+    <li><span class="ja">ユーザー登録やアカウント作成は不要です。</span><span class="en">No user registration or account creation is required.</span></li>
+    <li><span class="ja">利用状況やアクセス解析データを外部サーバーに送信することはありません。</span><span class="en">No usage data or analytics are sent to external servers.</span></li>
+    <li><span class="ja">編集中のファイル内容は、すべてお客様のPC上でのみ処理されます。</span><span class="en">All file content being edited is processed entirely on your local PC.</span></li>
+  </ul>
+
+  <h2><span class="ja">AI機能について</span><span class="en">AI Features</span></h2>
+  <p>
+    <span class="ja">本アプリのAI機能を使用する場合、お客様が入力したテキストや画像は、お客様自身が設定したAIプロバイダー（OpenAI、Anthropic、Google Gemini、またはローカルLLM）のAPIに送信されます。これらのデータの取り扱いについては、各AIプロバイダーのプライバシーポリシーをご確認ください。</span>
+    <span class="en">When using AI features, the text and images you provide are sent to the AI provider API that you have configured (OpenAI, Anthropic, Google Gemini, or a local LLM). Please review each AI provider's privacy policy regarding how they handle this data.</span>
+  </p>
+  <p>
+    <span class="ja">ローカルLLM（LM Studio、Ollama等）を使用する場合、データはネットワーク外に送信されません。</span>
+    <span class="en">When using local LLMs (LM Studio, Ollama, etc.), your data never leaves your network.</span>
+  </p>
+
+  <h2><span class="ja">ローカルに保存されるデータ</span><span class="en">Locally Stored Data</span></h2>
+  <p>
+    <span class="ja">本アプリは、以下のデータをお客様のPC上（<code>%LOCALAPPDATA%\VibeFront\</code>）にのみ保存します：</span>
+    <span class="en">The App stores the following data only on your local PC (under <code>%LOCALAPPDATA%\VibeFront\</code>):</span>
+  </p>
+  <ul>
+    <li><span class="ja">ウィンドウ位置・サイズなどのUI設定</span><span class="en">Window position, size, and UI preferences</span></li>
+    <li><span class="ja">AI プロバイダーのAPIキー設定</span><span class="en">AI provider API key configuration</span></li>
+    <li><span class="ja">最近使ったファイルの一覧</span><span class="en">Recent file list</span></li>
+    <li><span class="ja">パネルのドッキングレイアウト</span><span class="en">Panel docking layout</span></li>
+    <li><span class="ja">自動保存用の一時ファイル</span><span class="en">Auto-save temporary files</span></li>
+  </ul>
+
+  <h2><span class="ja">お問い合わせ</span><span class="en">Contact</span></h2>
+  <p>
+    <span class="ja">プライバシーに関するお問い合わせは、以下までご連絡ください。</span>
+    <span class="en">For privacy-related inquiries, please contact us at:</span>
+  </p>
+  <p>Email: <a href="mailto:support@mojosoft.biz">support@mojosoft.biz</a></p>
+</div>
+
+<script>
+function setLang(l){document.body.setAttribute('data-lang',l);document.documentElement.lang=l;localStorage.setItem('vibefront-lang',l)}
+function toggleLang(){setLang(document.body.getAttribute('data-lang')==='ja'?'en':'ja')}
+(function(){var s=localStorage.getItem('vibefront-lang');if(s){setLang(s);return}setLang((navigator.language||'').startsWith('ja')?'ja':'en')})();
+</script>
+</body>
+</html>
