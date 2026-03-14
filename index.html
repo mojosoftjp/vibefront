@@ -88,14 +88,11 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 .btn svg{width:18px;height:18px}
 .btn-sm{padding:10px 22px;font-size:.88rem}
 
-/* ===== Screenshot Showcase ===== */
+/* ===== Video Showcase ===== */
 .showcase{position:relative;padding:0 24px 80px;margin-top:-40px}
 .showcase-inner{max-width:1100px;margin:0 auto;position:relative}
 .showcase-frame{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 32px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.05),0 0 120px rgba(168,85,247,.1),0 0 120px rgba(34,211,238,.05);position:relative}
-.showcase-frame img{width:100%;display:block}
-.showcase-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(6,6,15,.6));pointer-events:none}
-.showcase-reflection{position:absolute;bottom:-60%;left:5%;right:5%;height:60%;overflow:hidden;opacity:.08;filter:blur(2px);transform:scaleY(-1);border-radius:16px}
-.showcase-reflection img{width:100%;display:block}
+.showcase-frame video{width:100%;display:block;border-radius:16px}
 
 /* ===== Section ===== */
 .section{padding:100px 24px}
@@ -304,14 +301,17 @@ footer{border-top:1px solid var(--border);padding:48px 24px;text-align:center}
   </div>
 </div>
 
-<!-- Screenshot Showcase -->
+<!-- Video Showcase -->
 <div class="showcase fade-in" style="margin-top:40px">
+  <p style="text-align:center;margin-bottom:20px;font-size:clamp(1rem,2vw,1.15rem);color:var(--text-muted);line-height:1.7;max-width:700px;margin-left:auto;margin-right:auto">
+    <span class="ja">製品名を入力するだけ。デザインもコードも、<strong style="color:var(--text-white)">すべてAIが自動生成。</strong></span>
+    <span class="en">Just type a product name. Design and code — <strong style="color:var(--text-white)">AI builds it all.</strong></span>
+  </p>
   <div class="showcase-inner">
     <div class="showcase-frame">
-      <img src="screenshot-dark.png" alt="VibeFront editor">
-    </div>
-    <div class="showcase-reflection" aria-hidden="true">
-      <img src="screenshot-dark.png" alt="">
+      <video controls preload="metadata" poster="" playsinline>
+        <source src="vf_video.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </div>
