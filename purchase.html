@@ -117,16 +117,20 @@ footer a{color:var(--text-muted);margin:0 12px}
 </head>
 <body data-lang="en">
 
-<button class="lang-toggle" onclick="toggleLang()">
-  <span class="ja">🇬🇧 English</span><span class="en">🇯🇵 日本語</span>
+<button class="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">
+  <span class="ja">EN</span>
+  <span class="en">日本語</span>
 </button>
 
 <!-- Nav -->
 <nav class="nav">
-  <a href="index.html" class="nav-brand"><img src="icon.png" alt="VibeFront"> VibeFront</a>
+  <a href="index.html" class="nav-brand" style="text-decoration:none">
+    <img src="icon.png" alt="VibeFront">
+    <span>VibeFront</span>
+  </a>
   <div class="nav-links">
     <a href="index.html#ai-demo"><span class="ja">AI機能</span><span class="en">AI Features</span></a>
-    <a href="index.html#features"><span class="ja">全機能</span><span class="en">Features</span></a>
+    <a href="index.html#features"><span class="ja">全機能</span><span class="en">All Features</span></a>
     <a href="index.html#pricing"><span class="ja">価格</span><span class="en">Pricing</span></a>
     <a href="purchase.html" class="active"><span class="ja">購入</span><span class="en">Purchase</span></a>
     <a href="help.html"><span class="ja">ヘルプ</span><span class="en">Help</span></a>
