@@ -49,8 +49,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
   background-repeat:repeat;opacity:.4}
 
 /* ===== Language ===== */
-.lang-toggle{position:fixed;top:20px;right:20px;z-index:10000;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:999px;padding:8px 18px;font-size:.82rem;font-weight:600;color:var(--text-muted);cursor:pointer;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:all .25s;letter-spacing:.02em}
-.lang-toggle:hover{background:rgba(255,255,255,.12);color:var(--text-white);border-color:var(--border-hover)}
+.lang-nav-btn{background:rgba(255,255,255,.08)!important;border:1px solid var(--border);border-radius:999px!important;padding:4px 14px!important;font-size:.78rem!important;font-weight:600!important;letter-spacing:.03em;cursor:pointer;transition:all .25s}
+.lang-nav-btn:hover{background:rgba(255,255,255,.15)!important;color:var(--text-white)!important;border-color:var(--border-hover)}
 [data-lang="ja"] .en,[data-lang="en"] .ja{display:none!important}
 
 /* ===== Navigation ===== */
@@ -224,17 +224,10 @@ footer{border-top:1px solid var(--border);padding:48px 24px;text-align:center}
   .section{padding:64px 20px}
   .pricing-card{padding:36px 28px}
   .nav{padding:0 16px}
-  .lang-toggle{top:12px;right:12px;padding:6px 14px;font-size:.78rem}
 }
 </style>
 </head>
 <body data-lang="en">
-
-<!-- Language Toggle -->
-<button class="lang-toggle" onclick="toggleLang()" aria-label="Toggle language">
-  <span class="ja">EN</span>
-  <span class="en">日本語</span>
-</button>
 
 <!-- Navigation -->
 <nav class="nav">
@@ -248,6 +241,7 @@ footer{border-top:1px solid var(--border);padding:48px 24px;text-align:center}
     <a href="#pricing"><span class="ja">価格</span><span class="en">Pricing</span></a>
     <a href="purchase.html"><span class="ja">購入</span><span class="en">Purchase</span></a>
     <a href="help.html"><span class="ja">ヘルプ</span><span class="en">Help</span></a>
+    <a href="javascript:void(0)" onclick="toggleLang()" class="lang-nav-btn"><span class="ja">EN</span><span class="en">JA</span></a>
   </div>
 </nav>
 
