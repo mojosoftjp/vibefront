@@ -201,6 +201,12 @@ footer{border-top:1px solid var(--border);padding:48px 24px;text-align:center}
 .footer-links a:hover{color:var(--text-muted)}
 .footer-copy{color:var(--text-dim);font-size:.8rem}
 
+/* ===== Screenshot Showcase ===== */
+.ss-showcase{max-width:1100px;margin:0 auto;padding:0 24px}
+.ss-showcase img{width:100%;border-radius:var(--radius);border:1px solid var(--border);box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.05),0 0 80px rgba(168,85,247,.08);transition:transform .3s ease,box-shadow .3s ease}
+.ss-showcase img:hover{transform:translateY(-4px);box-shadow:0 28px 80px rgba(0,0,0,.6),0 0 0 1px rgba(168,85,247,.2),0 0 100px rgba(168,85,247,.12)}
+.ss-caption{text-align:center;margin-top:16px;font-size:.88rem;color:var(--text-muted);line-height:1.6}
+
 /* ===== Animations ===== */
 .fade-in{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .fade-in.visible{opacity:1;transform:translateY(0)}
@@ -318,6 +324,15 @@ footer{border-top:1px solid var(--border);padding:48px 24px;text-align:center}
   </div>
 </div>
 
+<!-- ==================== Editor Screenshot ==================== -->
+<div class="ss-showcase fade-in" style="padding-bottom:40px">
+  <img src="ss1.png" alt="VibeFront editor — code, preview, and AI chat in 3-pane layout">
+  <p class="ss-caption">
+    <span class="ja">コードエディタ + ライブプレビュー + AIチャットの3ペイン構成。すべてが一画面に。</span>
+    <span class="en">Code editor + live preview + AI chat in a 3-pane layout. Everything in one screen.</span>
+  </p>
+</div>
+
 <!-- ==================== AI Demo ==================== -->
 <section id="ai-demo" class="section demo-section">
   <div class="demo-grid">
@@ -354,6 +369,15 @@ footer{border-top:1px solid var(--border);padding:48px 24px;text-align:center}
       </div>
     </div>
   </div>
+
+  <!-- AI Template LP generation screenshot -->
+  <div class="ss-showcase fade-in" style="margin-top:64px">
+    <img src="ss2.png" alt="AI templates — generate landing pages instantly">
+    <p class="ss-caption">
+      <span class="ja">テンプレートから「ランディングページ」を選び、製品名や特徴を入力するだけで完成。微調整もAIに指示するだけ。</span>
+      <span class="en">Pick "Landing Page" from templates, enter product details, and it's done. Fine-tune with AI instructions.</span>
+    </p>
+  </div>
 </section>
 
 <!-- ==================== Image to HTML ==================== -->
@@ -375,6 +399,15 @@ footer{border-top:1px solid var(--border);padding:48px 24px;text-align:center}
     <a href="beauty3.html" class="img-link">
       <img src="use_ai.png" alt="Image to HTML" style="width:100%; border-radius:var(--radius); border:1px solid var(--border); display:block;">
     </a>
+  </div>
+
+  <!-- Image-to-HTML screenshot -->
+  <div class="ss-showcase fade-in" style="margin-top:48px">
+    <img src="ss3.png" alt="Convert wireframe sketch to HTML with AI">
+    <p class="ss-caption">
+      <span class="ja">手描きワイヤーフレームやデザインカンプを画像で渡すだけ。AIがHTMLとCSSに変換し、細かい修正もライブプレビューを見ながらAIに指示するだけで完成。</span>
+      <span class="en">Just drop a hand-drawn wireframe or design comp. AI converts it to HTML & CSS, and you can fine-tune by giving instructions while watching the live preview.</span>
+    </p>
   </div>
 </section>
 
@@ -411,6 +444,24 @@ footer{border-top:1px solid var(--border);padding:48px 24px;text-align:center}
     <span class="ja">…ヒーロー、フッター、サイドバー、モーダル、パンくずリスト、テスティモニアル、メール、校正、要約、詳細化、軽量化、アクセシビリティ改善など、まだまだ多数</span>
     <span class="en">…plus Hero, Footer, Sidebar, Modal, Breadcrumb, Testimonials, Email, Proofread, Summarize, Detail, Minify, Accessibility improvements, and many more</span>
   </p>
+
+  <!-- Template categories screenshot -->
+  <div class="ss-showcase fade-in" style="margin-top:48px">
+    <img src="ss5.png" alt="30+ AI templates across 4 categories">
+    <p class="ss-caption">
+      <span class="ja">ページ生成・コンポーネント・文書操作・HTML最適化の4カテゴリ。豊富なテンプレート集で、もちろんカスタム指示も可能。</span>
+      <span class="en">4 categories: Page generation, Components, Text operations, HTML optimization. Rich template library with custom instructions support.</span>
+    </p>
+  </div>
+
+  <!-- SEO optimization screenshot -->
+  <div class="ss-showcase fade-in" style="margin-top:48px">
+    <img src="ss4.png" alt="AI automatically optimizes HTML for SEO">
+    <p class="ss-caption">
+      <span class="ja">HTMLの内容からAIが自動的にSEO最適化。Title・Meta Description・構造化データを一括生成。</span>
+      <span class="en">AI automatically optimizes your HTML for SEO — generating Title, Meta Description, and structured data in one click.</span>
+    </p>
+  </div>
 </section>
 
 <!-- ==================== AI Providers ==================== -->
