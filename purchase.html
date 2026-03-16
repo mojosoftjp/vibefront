@@ -374,18 +374,24 @@ function showHwError(show, msg) {
 if (document.getElementById('paypal-button-personal')) {
   paypal.Buttons({
     style: { layout: 'vertical', color: 'blue', shape: 'rect', label: 'paypal' },
-    onClick: function(data, actions) {
+    createOrder: function(data, actions) {
       var input = document.getElementById('hardware-id-input');
       var hwid = input ? input.value.trim().toUpperCase() : '';
-      if (!hwid) { showHwError(true); input.focus(); return actions.reject(); }
-      if (!validateHardwareId(hwid)) {
-        showHwError(true, '<span class="ja">ハードウェアIDの形式が正しくありません（例: VF-HW-A3F2K9X1B7D4E6G8）</span><span class="en">Invalid Hardware ID format (e.g. VF-HW-A3F2K9X1B7D4E6G8)</span>');
-        input.focus(); return actions.reject();
+      if (!hwid) {
+        showHwError(true);
+        input.focus();
+        var lang = document.body.getAttribute('data-lang');
+        alert(lang === 'ja' ? 'ハードウェアIDを入力してください。' : 'Please enter your Hardware ID.');
+        return Promise.reject();
       }
-      showHwError(false); return actions.resolve();
-    },
-    createOrder: function(data, actions) {
-      var hwid = document.getElementById('hardware-id-input').value.trim().toUpperCase();
+      if (!validateHardwareId(hwid)) {
+        showHwError(true);
+        input.focus();
+        var lang = document.body.getAttribute('data-lang');
+        alert(lang === 'ja' ? 'ハードウェアIDの形式が正しくありません（例: VF-HW-A3F2K9X1B7D4E6G8）' : 'Invalid Hardware ID format (e.g. VF-HW-A3F2K9X1B7D4E6G8)');
+        return Promise.reject();
+      }
+      showHwError(false);
       return actions.order.create({
         purchase_units: [{
           description: 'VibeFront Personal License [HW:' + hwid + ']',
