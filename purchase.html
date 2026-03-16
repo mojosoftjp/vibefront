@@ -68,6 +68,15 @@ a{color:var(--accent-cyan);text-decoration:none;transition:color .2s}a:hover{col
 .hwid-help{font-size:.78rem;color:var(--text-dim);margin-top:6px}
 .hwid-error{font-size:.8rem;color:#f87171;margin-top:4px;display:none}
 
+/* Store button */
+.btn-store{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px 20px;background:linear-gradient(135deg,#0078d4,#00bcf2);color:#fff;border-radius:8px;font-size:.95rem;font-weight:600;transition:all .2s;text-decoration:none;margin-bottom:12px}
+.btn-store:hover{background:linear-gradient(135deg,#006cbd,#00a8d8);color:#fff;transform:translateY(-1px)}
+.btn-store svg{width:18px;height:18px;flex-shrink:0}
+.or-divider{text-align:center;color:var(--text-dim);font-size:.8rem;margin:12px 0;position:relative}
+.or-divider::before,.or-divider::after{content:'';position:absolute;top:50%;width:calc(50% - 24px);height:1px;background:var(--border)}
+.or-divider::before{left:0}
+.or-divider::after{right:0}
+
 /* PayPal container */
 .paypal-container{margin:16px 0 8px;min-height:55px}
 .payment-note{display:flex;align-items:center;gap:6px;font-size:.78rem;color:var(--text-dim)}
@@ -169,6 +178,11 @@ footer a{color:var(--text-muted);margin:0 12px}
         </p>
         <p id="hardware-id-error" class="hwid-error"><span class="ja">ハードウェアIDを入力してください</span><span class="en">Please enter your Hardware ID</span></p>
       </div>
+      <a href="https://apps.microsoft.com/detail/9MXV2LWVXHT6" class="btn-store">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+        <span class="ja">Microsoft Store で購入</span><span class="en">Buy on Microsoft Store</span>
+      </a>
+      <div class="or-divider"><span class="ja">または</span><span class="en">or</span></div>
       <div id="paypal-button-personal" class="paypal-container"></div>
       <p class="payment-note">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
@@ -200,6 +214,11 @@ footer a{color:var(--text-muted);margin:0 12px}
           <span class="en">Business licenses work on unlimited PCs. Hardware ID is optional.</span>
         </p>
       </div>
+      <a href="https://apps.microsoft.com/detail/9MXV2LWVXHT6" class="btn-store">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+        <span class="ja">Microsoft Store で購入</span><span class="en">Buy on Microsoft Store</span>
+      </a>
+      <div class="or-divider"><span class="ja">または</span><span class="en">or</span></div>
       <div id="paypal-button-business" class="paypal-container"></div>
       <p class="payment-note">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
