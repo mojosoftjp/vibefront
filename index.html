@@ -153,6 +153,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;
 
 /* ===== Image to HTML ===== */
 .img2html{max-width:1100px;margin:0 auto;display:flex;gap:40px;align-items:center}
+.img-link{display:block;transition:transform .3s ease,box-shadow .3s ease;border-radius:var(--radius)}
+.img-link:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(168,85,247,.2),0 0 0 1px rgba(168,85,247,.4)}
 .img2html-visual{flex:1;position:relative}
 .img2html-visual .arrow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;width:64px;height:64px;border-radius:50%;background:var(--gradient-main);display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 0 32px var(--glow-purple);color:#fff}
 .img2html-card{flex:1;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
@@ -310,7 +312,7 @@ footer{border-top:1px solid var(--border);padding:48px 24px;text-align:center}
   <div class="showcase-inner">
     <div class="showcase-frame">
       <video autoplay muted loop playsinline preload="auto" controls>
-        <source src="vf_video.mp4" type="video/mp4">
+        <source src="vibe_video.mp4" type="video/mp4">
       </video>
     </div>
   </div>
@@ -359,40 +361,20 @@ footer{border-top:1px solid var(--border);padding:48px 24px;text-align:center}
   <div class="section-header fade-in">
     <div class="section-label"><span class="ja">画像→HTML変換</span><span class="en">Image to HTML</span></div>
     <h2 class="section-title">
-      <span class="ja">スクリーンショットから<br>HTMLを自動生成</span>
+      <span class="ja">ラフスケッチやスクリーンショットから<br>HTMLを自動生成</span>
       <span class="en">Generate HTML from<br>screenshots automatically</span>
     </h2>
     <p class="section-desc">
-      <span class="ja">デザインカンプ、他サイトのスクリーンショット、手描きワイヤーフレーム——<br>画像をドロップするだけで、AIがHTMLとCSSに変換します。</span>
+      <span class="ja">デザインカンプ、他サイトのスクリーンショット、手描きワイヤーフレーム、<br>画像を渡すだけで、AIがHTMLとCSSに変換します。
+      <br>作成後の細かい修正もライブプレビューを見ながらAIに指示するだけ！</span>
       <span class="en">Design mockups, website screenshots, hand-drawn wireframes —<br>just drop an image and AI converts it to HTML and CSS.</span>
     </p>
   </div>
 
-  <div class="img2html fade-in">
-    <div class="img2html-card">
-      <div class="card-header">🖼 <span class="ja">画像入力</span><span class="en">Image Input</span></div>
-      <div class="card-body" style="text-align:center;padding:32px;color:var(--text-dim);font-family:Inter,sans-serif;font-size:.9rem">
-        <div style="font-size:3rem;margin-bottom:12px">📸</div>
-        <span class="ja">スクリーンショットやデザイン画像を<br>ドラッグ&ドロップ</span>
-        <span class="en">Drag & drop a screenshot<br>or design image</span>
-      </div>
-    </div>
-    <div class="img2html-visual">
-      <div class="arrow">→</div>
-    </div>
-    <div class="img2html-card">
-      <div class="card-header">✨ <span class="ja">AI生成HTML</span><span class="en">AI-Generated HTML</span></div>
-      <div class="card-body">&lt;div class="hero"&gt;
-  &lt;h1&gt;Welcome&lt;/h1&gt;
-  &lt;p&gt;Your next project...&lt;/p&gt;
-  &lt;button class="cta"&gt;
-    Get Started
-  &lt;/button&gt;
-&lt;/div&gt;
-&lt;style&gt;
-  .hero { padding: 4rem; ... }
-&lt;/style&gt;</div>
-    </div>
+  <div class="img2html fade-in" style="display:block;">
+    <a href="beauty3.html" class="img-link">
+      <img src="use_ai.png" alt="Image to HTML" style="width:100%; border-radius:var(--radius); border:1px solid var(--border); display:block;">
+    </a>
   </div>
 </section>
 
