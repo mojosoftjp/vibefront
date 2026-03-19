@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XML_DIZ_INFO>
+  <MASTER_PAD_VERSION_INFO>
+    <MASTER_PAD_VERSION>4.0</MASTER_PAD_VERSION>
+    <MASTER_PAD_EDITOR>Hand-coded</MASTER_PAD_EDITOR>
+    <MASTER_PAD_INFO>Portable Application Description (PAD) for VibeFront</MASTER_PAD_INFO>
+  </MASTER_PAD_VERSION_INFO>
+
+  <Company_Info>
+    <Company_Name>Mojosoft</Company_Name>
+    <Address_1 />
+    <City_Town>Tokyo</City_Town>
+    <State_Province>Tokyo</State_Province>
+    <Zip_Postal_Code />
+    <Country>Japan</Country>
+    <Company_WebSite_URL>https://mojosoftjp.github.io/vibefront/</Company_WebSite_URL>
+    <Contact_First_Name>Mojosoft</Contact_First_Name>
+    <Contact_Last_Name>Support</Contact_Last_Name>
+    <Contact_Email>support@mojosoft.biz</Contact_Email>
+    <Support_Email>support@mojosoft.biz</Support_Email>
+    <General_Email>support@mojosoft.biz</General_Email>
+    <Sales_Email>support@mojosoft.biz</Sales_Email>
+  </Company_Info>
+
+  <Program_Info>
+    <Program_Name>VibeFront - AI HTML Editor</Program_Name>
+    <Program_Version>1.1.2</Program_Version>
+    <Program_Release_Month>03</Program_Release_Month>
+    <Program_Release_Day>19</Program_Release_Day>
+    <Program_Release_Year>2026</Program_Release_Year>
+    <Program_Cost_Dollars>19.99</Program_Cost_Dollars>
+    <Program_Cost_Other_Code>JPY</Program_Cost_Other_Code>
+    <Program_Cost_Other>2950</Program_Cost_Other>
+    <Program_Type>Shareware</Program_Type>
+    <Program_Release_Status>Major Update</Program_Release_Status>
+    <Program_Install_Support>Install and Uninstall</Program_Install_Support>
+    <Program_OS_Support>Win10,Win11</Program_OS_Support>
+    <Program_Language>English,Japanese</Program_Language>
+    <Program_Change_Info>v1.1.2: Software dependency disclosures added</Program_Change_Info>
+    <Program_Specific_Category>Development Tools</Program_Specific_Category>
+    <Program_Category_Class>Development::Web Development</Program_Category_Class>
+    <Program_System_Requirements>Windows 10 2004+, 4GB RAM, 200MB disk, WebView2 Runtime</Program_System_Requirements>
+    <File_Info>
+      <File_Size_Bytes>3355443</File_Size_Bytes>
+      <File_Size_K>3276</File_Size_K>
+      <File_Size_MB>3.2</File_Size_MB>
+    </File_Info>
+    <Expire_Info>
+      <Has_Expire_Info>N</Has_Expire_Info>
+      <Expire_Count />
+      <Expire_Based_On />
+      <Expire_Other_Info />
+      <Expire_Month />
+      <Expire_Day />
+      <Expire_Year />
+    </Expire_Info>
+  </Program_Info>
+
+  <Program_Descriptions>
+    <English>
+      <Keywords>HTML editor, AI code generator, web development, WYSIWYG, Emmet, local LLM, Ollama, desktop HTML editor, AI HTML, code editor</Keywords>
+      <Char_Desc_45>AI-powered desktop HTML editor for Windows</Char_Desc_45>
+      <Char_Desc_80>AI-powered HTML editor with 4 AI providers, 30+ templates, and Emmet support</Char_Desc_80>
+      <Char_Desc_250>VibeFront is a desktop HTML editor that accelerates web development with AI. Supports OpenAI, Claude, Gemini, and local LLMs. 30+ templates, image-to-HTML conversion, Emmet expansion, responsive preview, dark/light theme. Buy once, no subscription.</Char_Desc_250>
+      <Char_Desc_450>VibeFront is a desktop HTML editor that dramatically accelerates web development with the power of AI. Supports 4 AI providers (OpenAI, Claude, Gemini, local LLMs via Ollama/LM Studio). Features include 30+ built-in templates, image-to-HTML conversion, side-by-side WYSIWYG and code editing, Emmet expansion, responsive preview at 4 breakpoints, file explorer with drag-and-drop tag insertion, dark/light theme, and multi-encoding support. Buy once, use forever — no subscription required.</Char_Desc_450>
+      <Char_Desc_2000>VibeFront is a desktop HTML editor that dramatically accelerates web development with the power of AI.
+
+AI-Powered HTML Generation: Supports 4 AI providers — OpenAI, Claude (Anthropic), Gemini (Google), and local LLMs (Ollama / LM Studio). Describe what you need in the chat panel, and VibeFront generates complete HTML from 30+ built-in templates: landing pages, contact forms, pricing tables, FAQ sections, and more.
+
+Image-to-HTML Conversion: Drag and drop a screenshot or design mockup, and AI converts it into clean HTML and CSS. Reproduce any design in seconds.
+
+Professional Code Editor: Side-by-side WYSIWYG visual editor (WebView2 + Tiptap) and code editor (AvalonEdit). Emmet expansion support — type div>ul>li*3, press Tab to expand instantly. HTML syntax highlighting and code completion. Click text in preview to auto-jump to the corresponding source code.
+
+Responsive Preview: Preview at 4 breakpoints — Mobile (375px), Tablet (768px), Desktop (1200px), and Full width. Test responsive layouts without a real device.
+
+File Explorer: Drag files from the side panel directly into your code. Automatically inserts img, a, link, or script tags with correct relative paths.
+
+Dark / Light Theme: Switch between dark mode and light mode instantly. Freely dock, float, and rearrange panels.
+
+Multi-Encoding Support: Auto-detects UTF-8, UTF-8 BOM, Shift-JIS, EUC-JP, and UTF-16.
+
+Buy Once, No Subscription: Pay once and use forever. No monthly fees. Use local LLMs (Ollama / LM Studio) for completely free, fully offline AI — no API key required.</Char_Desc_2000>
+    </English>
+  </Program_Descriptions>
+
+  <Web_Info>
+    <Application_URLs>
+      <Application_Info_URL>https://mojosoftjp.github.io/vibefront/</Application_Info_URL>
+      <Application_Order_URL>https://mojosoftjp.github.io/vibefront/purchase.html</Application_Order_URL>
+      <Application_Screenshot_URL>https://mojosoftjp.github.io/vibefront/images/screenshot-dark.png</Application_Screenshot_URL>
+      <Application_Icon_URL>https://mojosoftjp.github.io/vibefront/images/icon-256.png</Application_Icon_URL>
+      <Application_XML_File_URL>https://mojosoftjp.github.io/vibefront/vibefront_pad.xml</Application_XML_File_URL>
+    </Application_URLs>
+    <Download_URLs>
+      <Primary_Download_URL>https://mojosoft.biz/VibeFront_Setup_1.1.2.exe</Primary_Download_URL>
+      <Secondary_Download_URL>https://apps.microsoft.com/detail/9MXV2LWVXHT6</Secondary_Download_URL>
+    </Download_URLs>
+  </Web_Info>
+</XML_DIZ_INFO>
