@@ -158,7 +158,7 @@ footer a{color:var(--text-muted);margin:0 12px}
     <!-- Personal -->
     <div class="pricing-card">
       <h3><span class="ja">個人版</span><span class="en">Personal</span></h3>
-      <div class="pricing-price"><span class="currency">¥</span>2,950<span class="unit"><span class="ja"> / 1PC（税込）</span><span class="en"> / 1 PC</span></span></div>
+      <div class="pricing-price"><span class="ja"><span class="currency">¥</span>2,950<span class="unit"> / 1PC（税込）</span></span><span class="en"><span class="currency">$</span>19.99<span class="unit"> / 1 PC</span></span></div>
       <p class="pricing-desc">
         <span class="ja">個人利用・フリーランスの方向け。1台のPCでご利用いただけます。</span>
         <span class="en">For individuals and freelancers. Valid for one PC.</span>
@@ -193,7 +193,7 @@ footer a{color:var(--text-muted);margin:0 12px}
     <!-- Business -->
     <div class="pricing-card">
       <h3><span class="ja">法人版</span><span class="en">Business</span></h3>
-      <div class="pricing-price"><span class="currency">¥</span>9,800<span class="unit"><span class="ja"> / 無制限（税込）</span><span class="en"> / Unlimited PCs</span></span></div>
+      <div class="pricing-price"><span class="ja"><span class="currency">¥</span>9,800<span class="unit"> / 無制限（税込）</span></span><span class="en"><span class="currency">$</span>65.00<span class="unit"> / Unlimited PCs</span></span></div>
       <p class="pricing-desc">
         <span class="ja">企業・チームでの利用向け。PC台数無制限でご利用いただけます。</span>
         <span class="en">For businesses and teams. Unlimited PC installations.</span>
@@ -266,8 +266,8 @@ footer a{color:var(--text-muted);margin:0 12px}
       <tr><th><span class="ja">口座種別</span><span class="en">Type</span></th><td><span class="ja">普通</span><span class="en">Savings</span></td></tr>
       <tr><th><span class="ja">口座番号</span><span class="en">Account #</span></th><td>1402999</td></tr>
       <tr><th><span class="ja">口座名義</span><span class="en">Name</span></th><td><span class="ja">ユ）モジヨソフト</span><span class="en">Mojosoft Co., Ltd.</span></td></tr>
-      <tr><th><span class="ja">個人版</span><span class="en">Personal</span></th><td>¥2,950</td></tr>
-      <tr><th><span class="ja">法人版</span><span class="en">Business</span></th><td>¥9,800</td></tr>
+      <tr><th><span class="ja">個人版</span><span class="en">Personal</span></th><td><span class="ja">¥2,950</span><span class="en">¥2,950 (≈$19.99 USD)</span></td></tr>
+      <tr><th><span class="ja">法人版</span><span class="en">Business</span></th><td><span class="ja">¥9,800</span><span class="en">¥9,800 (≈$65.00 USD)</span></td></tr>
     </table>
     <p class="bank-note">
       <span class="ja">※ 振込手数料はお客様のご負担となります<br>※ お振込後、メールアドレスとハードウェアIDを <a href="mailto:support@mojosoft.biz">support@mojosoft.biz</a> までお知らせください</span>
@@ -407,7 +407,9 @@ if (document.getElementById('paypal-button-personal')) {
     onApprove: function(data, actions) {
       return actions.order.capture().then(function(details) {
         var hwid = document.getElementById('hardware-id-input').value.trim().toUpperCase();
-        showSuccessModal('VibeFront Personal', '¥2,950', details.payer.email_address, hwid);
+        var lang = document.body.getAttribute('data-lang');
+        var amt = lang === 'ja' ? '¥2,950' : '$19.99 (¥2,950)';
+        showSuccessModal('VibeFront Personal', amt, details.payer.email_address, hwid);
       });
     },
     onError: function(err) { console.error('PayPal Error:', err); alert('Payment error. Please try again.'); }
@@ -435,7 +437,9 @@ if (document.getElementById('paypal-button-business')) {
       return actions.order.capture().then(function(details) {
         var input = document.getElementById('hardware-id-input-business');
         var hwid = input ? input.value.trim().toUpperCase() : '';
-        showSuccessModal('VibeFront Business (Unlimited PCs)', '¥9,800', details.payer.email_address, hwid || null);
+        var lang = document.body.getAttribute('data-lang');
+        var amt = lang === 'ja' ? '¥9,800' : '$65.00 (¥9,800)';
+        showSuccessModal('VibeFront Business (Unlimited PCs)', amt, details.payer.email_address, hwid || null);
       });
     },
     onError: function(err) { console.error('PayPal Error:', err); alert('Payment error. Please try again.'); }
