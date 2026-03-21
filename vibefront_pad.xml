@@ -24,7 +24,7 @@
 
   <Program_Info>
     <Program_Name>VibeFront - AI HTML Editor</Program_Name>
-    <Program_Version>1.2.0</Program_Version>
+    <Program_Version>1.2.1</Program_Version>
     <Program_Release_Month>03</Program_Release_Month>
     <Program_Release_Day>21</Program_Release_Day>
     <Program_Release_Year>2026</Program_Release_Year>
@@ -36,7 +36,7 @@
     <Program_Install_Support>Install and Uninstall</Program_Install_Support>
     <Program_OS_Support>Win10,Win11</Program_OS_Support>
     <Program_Language>English,Japanese</Program_Language>
-    <Program_Change_Info>v1.2.0: Full English localization for AI prompts — all AI features now work correctly in English</Program_Change_Info>
+    <Program_Change_Info>v1.2.1: Fix AI provider not switching when changed via main menu while chat panel is open</Program_Change_Info>
     <Program_Specific_Category>Development Tools</Program_Specific_Category>
     <Program_Category_Class>Development::Web Development</Program_Category_Class>
     <Program_System_Requirements>Windows 10 2004+, 4GB RAM, 200MB disk, WebView2 Runtime</Program_System_Requirements>
@@ -92,7 +92,7 @@ Buy Once, No Subscription: Pay once and use forever. No monthly fees. Use local 
       <Application_XML_File_URL>https://mojosoftjp.github.io/vibefront/vibefront_pad.xml</Application_XML_File_URL>
     </Application_URLs>
     <Download_URLs>
-      <Primary_Download_URL>https://mojosoft.biz/VibeFront_Setup_1.2.0.exe</Primary_Download_URL>
+      <Primary_Download_URL>https://mojosoft.biz/VibeFront_Setup_1.2.1.exe</Primary_Download_URL>
       <Secondary_Download_URL>https://apps.microsoft.com/detail/9MXV2LWVXHT6</Secondary_Download_URL>
     </Download_URLs>
   </Web_Info>
