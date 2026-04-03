@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <link rel="icon" type="image/png" href="icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Artful Code</title>
+  <title>アートフル・コード</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
 
@@ -70,80 +70,20 @@
   }
 
   .logo {
+    font-size: 1.75rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    color: var(--text-primary);
     text-decoration: none;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    color: var(--text-primary);
+    gap: 0.5rem;
   }
 
-  .logo-icon {
-    position: relative;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .logo-icon::before {
-    content: '';
-    position: absolute;
-    inset: 0;
+  .logo span {
     background: var(--accent-gradient);
-    border-radius: 10px;
-    transform: rotate(45deg);
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-
-  .logo-icon::after {
-    content: '';
-    position: absolute;
-    inset: 2px;
-    background: var(--bg-base);
-    border-radius: 8px;
-    transform: rotate(45deg);
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-
-  .logo:hover .logo-icon::before,
-  .logo:hover .logo-icon::after {
-    transform: rotate(90deg);
-  }
-
-  .logo-icon svg {
-    position: relative;
-    z-index: 1;
-    width: 18px;
-    height: 18px;
-    color: var(--accent-color);
-    transition: transform 0.5s ease;
-  }
-
-  .logo:hover .logo-icon svg {
-    transform: scale(1.1);
-  }
-
-  .logo-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .logo-text .main {
-    font-size: 1.25rem;
-    font-weight: 900;
-    line-height: 1;
-    letter-spacing: 0.05em;
-  }
-
-  .logo-text .sub {
-    font-size: 0.65rem;
-    color: var(--accent-color);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-top: 3px;
-    font-weight: 700;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .nav {
@@ -479,20 +419,12 @@
 <body>
 
 <header class="header">
-  <a href="#" class="logo">
-    <div class="logo-icon">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-    </div>
-    <div class="logo-text">
-      <span class="main">Artful</span>
-      <span class="sub">Code</span>
-    </div>
-  </a>
+  <a href="#" class="logo">A<span>.</span></a>
   <nav class="nav">
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
+    <a href="#">ホーム</a>
+    <a href="#">アバウト</a>
+    <a href="#">サービス</a>
+    <a href="#">お問い合わせ</a>
   </nav>
 </header>
 
@@ -502,9 +434,9 @@
       <img src="beauty2.jpg" width="350" alt="Digital Concept">
     </div>
     <div class="hero-content">
-      <h1>Shaping <span>Digital Beauty</span></h1>
-      <p>Realizing the digital society. Expressing brand identity.<br>Digital industry. The fusion of design and implementation.</p>
-      <a href="#" class="btn-primary">View Projects</a>
+      <h1>デジタル・ビューティーを<span>形作る</span></h1>
+      <p>デジタル社会の実感。ブランドの個性を表現。<br>デジタル産業。デザインと実装の融合。</p>
+      <a href="#" class="btn-primary">プロジェクトを見る</a>
     </div>
   </section>
 
@@ -513,27 +445,27 @@
       <div class="icon-wrapper">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
       </div>
-      <h3>Cutting-edge Technology</h3>
-      <p>Specializing in cutting-edge technologies. We guide your projects to guaranteed success.</p>
-      <a href="#" class="feature-link">Learn More <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></a>
+      <h3>最先端技術</h3>
+      <p>これら、最先端技術に特化。あなたのプロジェクトを確実な成功へと導きます。</p>
+      <a href="#" class="feature-link">詳細を見る <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></a>
     </div>
 
     <div class="feature-card">
       <div class="icon-wrapper">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
       </div>
-      <h3>Creative Implementation</h3>
-      <p>Turning innovative ideas into reality. Creating revolutionary digital experiences through beautiful code.</p>
-      <a href="#" class="feature-link">Learn More <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></a>
+      <h3>創造的実装</h3>
+      <p>斬新なアイデアをカタチに。美しいコードから革新的なデジタル体験を創造へ。</p>
+      <a href="#" class="feature-link">詳細を見る <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></a>
     </div>
 
     <div class="feature-card">
       <div class="icon-wrapper">
         <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
       </div>
-      <h3>Teamwork</h3>
-      <p>Professionals with diverse skills gather to deliver the best performance.</p>
-      <a href="#" class="feature-link">Learn More <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></a>
+      <h3>チーム力</h3>
+      <p>多様なスキルを持つプロフェッショナルが集結し、最高のパフォーマンスを発揮。</p>
+      <a href="#" class="feature-link">詳細を見る <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></a>
     </div>
   </section>
 </main>
@@ -550,7 +482,7 @@
       <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1.04-.1z"/></svg>
     </a>
   </div>
-  <p class="copyright">&copy; 2026 Artful Code</p>
+  <p class="copyright">&copy; 2024 アートフル・コード</p>
 </footer>
 
 </body>
