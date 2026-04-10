@@ -55,6 +55,16 @@ a{color:var(--accent-cyan);text-decoration:none;transition:color .2s}a:hover{col
 .pricing-price{font-size:2.6rem;font-weight:900;letter-spacing:-.03em;margin-bottom:4px}
 .pricing-price .currency{font-size:1rem;font-weight:600;vertical-align:super;margin-right:2px}
 .pricing-price .unit{font-size:.85rem;font-weight:400;color:var(--text-muted)}
+.pricing-price .old-price{display:inline-block;font-size:1.4rem;font-weight:600;color:var(--text-dim);text-decoration:line-through;text-decoration-color:#ff6b9d;text-decoration-thickness:2px;margin-right:10px}
+.pricing-price .old-price .currency{font-size:.7rem}
+.pricing-price .sale-price{display:inline-block;background:linear-gradient(135deg,#ff6b9d,#ff9068);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sale-tag{display:inline-block;background:linear-gradient(135deg,#ff6b9d,#ff9068);color:#fff;padding:3px 10px;border-radius:999px;font-size:.68rem;font-weight:800;letter-spacing:.04em;margin-left:6px;vertical-align:middle;text-transform:uppercase;box-shadow:0 4px 14px rgba(255,107,157,.35)}
+.sale-note{display:block;font-size:.78rem;font-weight:500;color:#ff9fbd;margin-top:6px;letter-spacing:.01em}
+.sale-banner{background:linear-gradient(135deg,rgba(255,107,157,.12),rgba(255,144,104,.12));border:1px solid rgba(255,107,157,.35);border-radius:var(--radius);padding:18px 24px;margin:0 auto 28px;max-width:720px;text-align:center;box-shadow:0 8px 30px rgba(255,107,157,.08)}
+.sale-banner-title{font-size:1.05rem;font-weight:800;background:linear-gradient(135deg,#ff6b9d,#ff9068);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px;letter-spacing:.01em}
+.sale-banner-desc{font-size:.85rem;color:var(--text-muted);line-height:1.6}
+.sale-banner-desc strong{color:#ff9fbd;font-weight:700}
+.paypal-price-note{font-size:.75rem;color:var(--text-dim);text-align:center;margin-top:4px;margin-bottom:8px;line-height:1.5}
 .pricing-desc{color:var(--text-muted);font-size:.9rem;margin-bottom:20px}
 .pricing-features{list-style:none;margin-bottom:24px;display:flex;flex-direction:column;gap:10px}
 .pricing-features li{display:flex;gap:10px;align-items:center;font-size:.88rem;color:var(--text-muted)}
@@ -154,12 +164,32 @@ footer a{color:var(--text-muted);margin:0 12px}
 
 <!-- Pricing -->
 <section class="pricing-section">
+
+  <!-- Sale Banner -->
+  <div class="sale-banner">
+    <div class="sale-banner-title">
+      <span class="ja">🎉 発売記念セール開催中！</span>
+      <span class="en">🎉 Launch Sale Now On!</span>
+    </div>
+    <div class="sale-banner-desc">
+      <span class="ja"><strong>Microsoft Store 限定</strong> — 個人版が <strong>¥2,950 → ¥1,450（約50% OFF）</strong>。<strong>4月30日まで</strong>の期間限定価格です。</span>
+      <span class="en"><strong>Microsoft Store exclusive</strong> — Personal edition <strong>~50% OFF</strong>. Limited-time price until <strong>April 30</strong>.</span>
+    </div>
+  </div>
+
   <div class="pricing-grid">
 
     <!-- Personal -->
     <div class="pricing-card">
-      <h3><span class="ja">個人版</span><span class="en">Personal</span></h3>
-      <div class="pricing-price"><span class="ja"><span class="currency">¥</span>2,950<span class="unit"> / 1PC（税込）</span></span><span class="en"><span class="currency">$</span>19.99<span class="unit"> / 1 PC</span></span></div>
+      <h3><span class="ja">個人版<span class="sale-tag">Sale</span></span><span class="en">Personal<span class="sale-tag">Sale</span></span></h3>
+      <div class="pricing-price">
+        <span class="ja"><span class="old-price"><span class="currency">¥</span>2,950</span><span class="sale-price"><span class="currency">¥</span>1,450</span><span class="unit"> / 1PC（税込）</span></span>
+        <span class="en"><span class="old-price"><span class="currency">$</span>19.99</span><span class="sale-price">~50% OFF</span><span class="unit"> / 1 PC</span></span>
+      </div>
+      <div class="sale-note">
+        <span class="ja">※ セール価格はMicrosoft Store版のみ・4月30日まで</span>
+        <span class="en">※ Sale price on Microsoft Store only, until April 30</span>
+      </div>
       <p class="pricing-desc">
         <span class="ja">個人利用・フリーランスの方向け。1台のPCでご利用いただけます。</span>
         <span class="en">For individuals and freelancers. Valid for one PC.</span>
@@ -184,6 +214,10 @@ footer a{color:var(--text-muted);margin:0 12px}
         <span class="ja">Microsoft Store で購入</span><span class="en">Buy on Microsoft Store</span>
       </a>
       <div class="or-divider"><span class="ja">または</span><span class="en">or</span></div>
+      <p class="paypal-price-note">
+        <span class="ja">PayPal / 銀行振込でのダウンロード版は通常価格 <strong style="color:var(--text-muted)">¥2,950</strong>（セール対象外）</span>
+        <span class="en">PayPal / bank transfer (standalone): regular price <strong style="color:var(--text-muted)">¥2,950</strong> (not included in sale)</span>
+      </p>
       <div id="paypal-button-personal" class="paypal-container"></div>
       <p class="payment-note">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
