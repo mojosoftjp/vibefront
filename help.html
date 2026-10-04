@@ -179,8 +179,8 @@ kbd{display:inline-block;padding:2px 8px;border-radius:4px;background:rgba(255,2
 </p>
 
 <p>
-  <span class="ja">VibeFrontは、AIを搭載したWindows向けデスクトップHTMLエディタです。コードエディタ（AvalonEdit）とビジュアルエディタ（WebView2+Tiptap）を組み合わせ、AIによるHTML生成・校正・翻訳・最適化機能を備えています。</span>
-  <span class="en">VibeFront is an AI-powered desktop HTML editor for Windows. It combines a code editor (AvalonEdit) with a visual editor (WebView2 + Tiptap), plus AI-powered HTML generation, proofreading, translation, and optimization.</span>
+  <span class="ja">VibeFrontは、AIを搭載したWindows向けデスクトップHTMLエディタです。コードエディタ（AvalonEdit）とリアルタイムプレビュー（WebView2）を組み合わせ、AIによるHTML生成・校正・翻訳・最適化機能を備えています。</span>
+  <span class="en">VibeFront is an AI-powered desktop HTML editor for Windows. It combines a code editor (AvalonEdit) with a live preview (WebView2), plus AI-powered HTML generation, proofreading, translation, and optimization.</span>
 </p>
 
 <h2 id="quickstart">
@@ -246,32 +246,38 @@ kbd{display:inline-block;padding:2px 8px;border-radius:4px;background:rgba(255,2
   <tbody>
     <tr>
       <td><strong>Google Gemini</strong></td>
-      <td>gemini-2.5-flash</td>
-      <td><span class="ja">高速・高品質・無料枠大</span><span class="en">Fast, high quality, generous free tier</span></td>
+      <td>gemini-3.8-flash</td>
+      <td><span class="ja">VibeFrontの既定・高速・高品質・画像対応。初めての方におすすめ</span><span class="en">VibeFront default. Fast, high quality, vision capable. Best place to start</span></td>
       <td><span class="tag tag-free"><span class="ja">無料枠あり</span><span class="en">Free tier</span></span></td>
     </tr>
     <tr>
       <td><strong>Google Gemini</strong></td>
-      <td>gemini-2.5-pro</td>
-      <td><span class="ja">最高品質の推論</span><span class="en">Best reasoning quality</span></td>
-      <td><span class="tag tag-free"><span class="ja">無料枠あり</span><span class="en">Free tier</span></span></td>
+      <td>gemini-3.1-pro-preview</td>
+      <td><span class="ja">最高性能（プレビュー版）</span><span class="en">Top performance (preview)</span></td>
+      <td><span class="tag tag-paid"><span class="ja">有料枠のみ</span><span class="en">Paid tier only</span></span></td>
     </tr>
     <tr>
       <td><strong>OpenAI</strong></td>
-      <td>gpt-4o</td>
-      <td><span class="ja">バランス良好・画像対応</span><span class="en">Well-balanced, vision capable</span></td>
+      <td>gpt-6.1-sol</td>
+      <td><span class="ja">VibeFrontの既定・バランス良好・画像対応</span><span class="en">VibeFront default. Well-balanced, vision capable</span></td>
       <td><span class="tag tag-paid"><span class="ja">従量課金</span><span class="en">Pay-per-use</span></span></td>
     </tr>
     <tr>
       <td><strong>OpenAI</strong></td>
-      <td>gpt-4o-mini</td>
-      <td><span class="ja">高速・低コスト</span><span class="en">Fast, low cost</span></td>
+      <td>gpt-6-luna</td>
+      <td><span class="ja">高速・最も低コスト</span><span class="en">Fast, lowest cost</span></td>
       <td><span class="tag tag-paid"><span class="ja">従量課金</span><span class="en">Pay-per-use</span></span></td>
     </tr>
     <tr>
       <td><strong>Anthropic</strong></td>
-      <td>claude-sonnet-4-6</td>
-      <td><span class="ja">コード生成が得意</span><span class="en">Excellent at code generation</span></td>
+      <td>claude-opus-5-5</td>
+      <td><span class="ja">VibeFrontの既定・最高性能・コード生成が得意</span><span class="en">VibeFront default. Top performance, excellent at code generation</span></td>
+      <td><span class="tag tag-paid"><span class="ja">従量課金</span><span class="en">Pay-per-use</span></span></td>
+    </tr>
+    <tr>
+      <td><strong>Anthropic</strong></td>
+      <td>claude-sonnet-5-5</td>
+      <td><span class="ja">高速・バランス型・コード生成が得意</span><span class="en">Fast, balanced, great at code generation</span></td>
       <td><span class="tag tag-paid"><span class="ja">従量課金</span><span class="en">Pay-per-use</span></span></td>
     </tr>
     <tr>
@@ -295,6 +301,11 @@ kbd{display:inline-block;padding:2px 8px;border-radius:4px;background:rgba(255,2
   </tbody>
 </table>
 
+<p>
+  <span class="ja">このほか、AI設定では GPT-6 Astra（最高性能・高コスト）、Claude Haiku 4.5（超高速・低コスト）、Gemini 3.5 Flash Lite（低コスト・安定版）も選択できます。</span>
+  <span class="en">AI Settings also offers GPT-6 Astra (most capable, higher cost), Claude Haiku 4.5 (ultra fast, low cost), and Gemini 3.5 Flash Lite (low cost, stable).</span>
+</p>
+
 <div class="callout">
   <strong><span class="ja">初心者へのおすすめ</span><span class="en">Recommendation for beginners</span></strong><br>
   <span class="ja"><strong>Google Gemini</strong> が最もおすすめです。無料のAPIキーが簡単に取得でき、品質も高く、画像→HTML変換にも対応しています。プライバシーを重視する場合は <strong>Ollama</strong>（ローカルLLM）がおすすめです。</span>
@@ -307,8 +318,8 @@ kbd{display:inline-block;padding:2px 8px;border-radius:4px;background:rgba(255,2
 </h2>
 
 <p>
-  <span class="ja">Google Geminiは無料枠が大きく、初めてAIを使う方に最適です。</span>
-  <span class="en">Google Gemini has a generous free tier and is perfect for those new to AI.</span>
+  <span class="ja">Google Geminiは、VibeFrontの既定モデル Gemini 3.8 Flash を無料枠で使えるため、初めてAIを使う方に最適です。</span>
+  <span class="en">Google Gemini lets you use VibeFront's default model, Gemini 3.8 Flash, on its free tier, making it perfect for those new to AI.</span>
 </p>
 
 <h3><span class="ja">APIキーの取得手順</span><span class="en">How to get an API key</span></h3>
@@ -332,9 +343,9 @@ kbd{display:inline-block;padding:2px 8px;border-radius:4px;background:rgba(255,2
 </ol>
 
 <div class="callout">
-  <strong><span class="ja">無料枠の目安</span><span class="en">Free tier limits</span></strong><br>
-  <span class="ja">Gemini 2.5 Flash: 1分あたり15リクエスト、1日あたり1,500リクエスト。通常のHTML編集には十分です。</span>
-  <span class="en">Gemini 2.5 Flash: 15 requests/minute, 1,500 requests/day. More than enough for typical HTML editing.</span>
+  <strong><span class="ja">無料枠について</span><span class="en">About the free tier</span></strong><br>
+  <span class="ja">Gemini 3.8 Flash は無料枠で利用できます。1分・1日あたりのリクエスト上限はGoogleが設定しており変更されることがあるため、最新の値は <a href="https://aistudio.google.com/" target="_blank" rel="noopener">Google AI Studio</a> でご確認ください。なお、Gemini 3.1 Pro (Preview) は無料枠の対象外（有料枠のみ）です。</span>
+  <span class="en">Gemini 3.8 Flash is available on the free tier. Request limits (per minute and per day) are set by Google and can change, so check the current values in <a href="https://aistudio.google.com/" target="_blank" rel="noopener">Google AI Studio</a>. Note that Gemini 3.1 Pro (Preview) is not included in the free tier (paid tier only).</span>
 </div>
 
 <!-- ===== OpenAI ===== -->
@@ -367,8 +378,14 @@ kbd{display:inline-block;padding:2px 8px;border-radius:4px;background:rgba(255,2
 
 <div class="callout warn">
   <strong><span class="ja">料金について</span><span class="en">About pricing</span></strong><br>
-  <span class="ja">OpenAI APIは従量課金です。最初に$5〜$10程度のクレジットを追加する必要があります。gpt-4o-miniは非常に安価で、HTML編集での一般的な利用なら月$1以下で済みます。</span>
-  <span class="en">OpenAI API is pay-per-use. You'll need to add ~$5-$10 in credits to start. gpt-4o-mini is very affordable — typical HTML editing usage costs less than $1/month.</span>
+  <span class="ja">OpenAI APIは従量課金です。最初に$5〜$10程度のクレジットを追加する必要があります。AI設定でモデルを GPT-6 Luna（gpt-6-luna）にすると非常に安価で、HTML編集での一般的な利用なら月$1以下で済みます。</span>
+  <span class="en">OpenAI API is pay-per-use. You'll need to add ~$5-$10 in credits to start. Selecting GPT-6 Luna (gpt-6-luna) in AI Settings is very affordable — typical HTML editing usage costs less than $1/month.</span>
+</div>
+
+<div class="callout">
+  <strong><span class="ja">組織の本人確認（Verify Organization）について</span><span class="en">About organization verification</span></strong><br>
+  <span class="ja">OpenAIでは、組織の本人確認が済んでいないと一部のモデルで応答の逐次表示（ストリーミング）が許可されません。VibeFront v1.3.0 はこの場合、自動で一括表示に切り替えます（応答の生成が終わってからまとめて表示されるため、表示まで少し時間がかかります）。本人確認は OpenAI Platform の組織設定から行えます。</span>
+  <span class="en">If your OpenAI organization is not verified, some models do not allow streamed (word-by-word) responses. VibeFront v1.3.0 then automatically switches to showing the whole response at once (it appears after generation finishes, so it takes a little longer). You can verify your organization in the OpenAI Platform organization settings.</span>
 </div>
 
 <!-- ===== Anthropic ===== -->
@@ -394,6 +411,12 @@ kbd{display:inline-block;padding:2px 8px;border-radius:4px;background:rgba(255,2
     <span class="en">In VibeFront's AI Settings, select "Anthropic (Claude)", paste the key, and save.</span>
   </li>
 </ol>
+
+<div class="callout warn">
+  <strong><span class="ja">料金について</span><span class="en">About pricing</span></strong><br>
+  <span class="ja">Anthropic APIは従量課金です。既定の Claude Opus 5.5 は最高性能のモデルです。費用を抑えたい場合は、AI設定で Claude Sonnet 5.5 や Claude Haiku 4.5 を選んでください。v1.3.0 からプロンプトキャッシュに対応したため、同じ会話で続けて（5分以内に）送信すると、それまでの会話の再送分が割安になります（会話がごく短い場合は対象外です）。</span>
+  <span class="en">The Anthropic API is pay-per-use. The default, Claude Opus 5.5, is the most capable model. To reduce costs, choose Claude Sonnet 5.5 or Claude Haiku 4.5 in AI Settings. Since v1.3.0, prompt caching is supported: when you send follow-up messages in the same conversation (within 5 minutes), the resent earlier conversation is billed at a lower rate (very short conversations are not cached).</span>
+</div>
 
 <!-- ===== Ollama ===== -->
 <h2 id="ai-ollama">
@@ -675,7 +698,7 @@ kbd{display:inline-block;padding:2px 8px;border-radius:4px;background:rgba(255,2
 
 <div class="card">
   <h4><span class="ja">Q: AIのAPIキーの料金はVibeFrontの価格に含まれますか？</span><span class="en">Q: Are AI API costs included in VibeFront's price?</span></h4>
-  <p><span class="ja">いいえ。AIプロバイダーのAPI利用料は別途かかります。ただし、Google Geminiは無料枠が大きく、ローカルLLM（Ollama/LM Studio）は完全無料です。</span><span class="en">No. AI provider API costs are separate. However, Google Gemini has a generous free tier, and local LLMs (Ollama/LM Studio) are completely free.</span></p>
+  <p><span class="ja">いいえ。AIプロバイダーのAPI利用料は別途かかります。ただし、Google Gemini は Gemini 3.8 Flash を無料枠で使え、ローカルLLM（Ollama/LM Studio）は完全無料です。</span><span class="en">No. AI provider API costs are separate. However, Google Gemini offers a free tier for Gemini 3.8 Flash, and local LLMs (Ollama/LM Studio) are completely free.</span></p>
 </div>
 
 <div class="card">
@@ -691,6 +714,26 @@ kbd{display:inline-block;padding:2px 8px;border-radius:4px;background:rgba(255,2
 <div class="card">
   <h4><span class="ja">Q: 設定ファイルはどこに保存されますか？</span><span class="en">Q: Where are settings stored?</span></h4>
   <p><span class="ja"><code>%LOCALAPPDATA%\VibeFront\</code> に保存されます。Windowsのファイルエクスプローラーのアドレスバーに貼り付けると開けます。</span><span class="en">Stored in <code>%LOCALAPPDATA%\VibeFront\</code>. Paste this into Windows Explorer's address bar to open it.</span></p>
+</div>
+
+<div class="card">
+  <h4><span class="ja">Q: 「出力が上限に達したため、応答が途中で切れています」と表示されました</span><span class="en">Q: I see "The response was cut off because it reached the output limit"</span></h4>
+  <p><span class="ja">AIが一度に出力できる量の上限に達したため、応答が最後まで生成されていません。チャットで「続けて」と送信して続きを生成させるか、依頼を小さく分けて（例: ページ全体ではなくセクションごとに）お試しください。</span><span class="en">The AI reached the maximum amount it can output at once, so the response is incomplete. Send "continue" in the chat to generate the rest, or split your request into smaller parts (for example, one section at a time instead of the whole page).</span></p>
+</div>
+
+<div class="card">
+  <h4><span class="ja">Q: 以前選んでいたAIモデルが一覧にありません</span><span class="en">Q: The AI model I used before is no longer in the list</span></h4>
+  <p><span class="ja">v1.3.0 でAIモデルの一覧を各社の最新モデルに更新しました。提供終了・利用制限されたモデル（GPT-4o、Gemini 2.0 Flash / 2.5 など）を設定していた場合は、同じ価格帯の後継モデルへ自動で切り替わります。別のモデルを使いたい場合は、AI設定からいつでも変更できます。</span><span class="en">v1.3.0 updated the model list to each provider's latest models. If you had selected a retired or restricted model (such as GPT-4o or Gemini 2.0 Flash / 2.5), VibeFront automatically switches to its successor in the same price range. You can change the model in AI Settings at any time.</span></p>
+</div>
+
+<div class="card">
+  <h4><span class="ja">Q: 「AIが安全上の理由で応答を拒否しました」と表示されました</span><span class="en">Q: I see "The AI declined to respond for safety reasons"</span></h4>
+  <p><span class="ja">AIプロバイダーの安全機能が依頼内容を拒否した場合に表示されます。通常のWeb制作の依頼で表示された場合は、依頼内容を言い換えて再度お試しください。</span><span class="en">This appears when the AI provider's safety system declines the request. If it appears for an ordinary web design request, please rephrase your request and try again.</span></p>
+</div>
+
+<div class="card">
+  <h4><span class="ja">Q: 試用期間が終了するとどうなりますか？（ダウンロード版）</span><span class="en">Q: What happens when the trial period ends? (download edition)</span></h4>
+  <p><span class="ja">ダウンロード版は15日間お試しいただけます。試用期間の終了後も、HTMLの編集・プレビューは引き続きご利用いただけますが、ファイルの保存とAI機能はライセンスのご購入後にご利用いただけます。Microsoft Store版にはこの制限はありません。</span><span class="en">The download edition can be tried for 15 days. After the trial ends, you can still edit and preview HTML, but saving files and AI features require a license. The Microsoft Store edition has no such limitation.</span></p>
 </div>
 
 <!-- ==================== Support ==================== -->
