@@ -24,9 +24,9 @@
 
   <Program_Info>
     <Program_Name>VibeFront - AI HTML Editor</Program_Name>
-    <Program_Version>1.2.1</Program_Version>
-    <Program_Release_Month>03</Program_Release_Month>
-    <Program_Release_Day>21</Program_Release_Day>
+    <Program_Version>1.3.0</Program_Version>
+    <Program_Release_Month>10</Program_Release_Month>
+    <Program_Release_Day>04</Program_Release_Day>
     <Program_Release_Year>2026</Program_Release_Year>
     <Program_Cost_Dollars>19.99</Program_Cost_Dollars>
     <Program_Cost_Other_Code>JPY</Program_Cost_Other_Code>
@@ -36,14 +36,14 @@
     <Program_Install_Support>Install and Uninstall</Program_Install_Support>
     <Program_OS_Support>Win10,Win11</Program_OS_Support>
     <Program_Language>English,Japanese</Program_Language>
-    <Program_Change_Info>v1.2.1: Fix AI provider not switching when changed via main menu while chat panel is open</Program_Change_Info>
+    <Program_Change_Info>v1.3.0: Support for the latest AI models (OpenAI GPT-6, Claude Opus 5.5 / Sonnet 5.5, Gemini 3.8 Flash), automatic switch from retired models, output-limit warning, Claude prompt caching, bug fixes</Program_Change_Info>
     <Program_Specific_Category>Development Tools</Program_Specific_Category>
     <Program_Category_Class>Development::Web Development</Program_Category_Class>
     <Program_System_Requirements>Windows 10 2004+, 4GB RAM, 200MB disk, WebView2 Runtime</Program_System_Requirements>
     <File_Info>
-      <File_Size_Bytes>3355443</File_Size_Bytes>
-      <File_Size_K>3276</File_Size_K>
-      <File_Size_MB>3.2</File_Size_MB>
+      <File_Size_Bytes>51470160</File_Size_Bytes>
+      <File_Size_K>50263</File_Size_K>
+      <File_Size_MB>49.1</File_Size_MB>
     </File_Info>
     <Expire_Info>
       <Has_Expire_Info>N</Has_Expire_Info>
@@ -92,7 +92,7 @@ Buy Once, No Subscription: Pay once and use forever. No monthly fees. Use local 
       <Application_XML_File_URL>https://mojosoftjp.github.io/vibefront/vibefront_pad.xml</Application_XML_File_URL>
     </Application_URLs>
     <Download_URLs>
-      <Primary_Download_URL>https://mojosoft.biz/VibeFront_Setup_1.2.1.exe</Primary_Download_URL>
+      <Primary_Download_URL>https://mojosoft.biz/VibeFront_Setup_1.3.0.exe</Primary_Download_URL>
       <Secondary_Download_URL>https://apps.microsoft.com/detail/9MXV2LWVXHT6</Secondary_Download_URL>
     </Download_URLs>
   </Web_Info>
