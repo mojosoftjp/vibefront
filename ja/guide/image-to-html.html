@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../../icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>スクリーンショットやデザインカンプからHTMLを作る方法｜AIで画像をHTML+CSSに変換</title>
+<meta name="description" content="画像（スクリーンショット・デザインカンプ・手描きのラフ）からHTMLとCSSを作る方法を、手で書く・AIチャットを使う・AI HTMLエディタを使うの3通りで解説。VibeFrontなら画像を添付するだけでHTML化し、プレビューを見ながら修正できます。">
+<meta name="theme-color" content="#0a0a1a">
+<link rel="canonical" href="https://mojosoftjp.github.io/vibefront/ja/guide/image-to-html.html">
+<meta property="og:title" content="スクリーンショットやデザインカンプからHTMLを作る方法">
+<meta property="og:description" content="画像からHTMLとCSSを作る3つの方法と、AI HTMLエディタ VibeFront での具体的な手順・コツ・注意点。">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://mojosoftjp.github.io/vibefront/ja/guide/image-to-html.html">
+<meta property="og:image" content="https://mojosoftjp.github.io/vibefront/ss1.png">
+<meta property="og:locale" content="ja_JP">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://mojosoftjp.github.io/vibefront/ja/guide/image-to-html.html#article",
+      "headline": "スクリーンショットやデザインカンプからHTMLを作る方法",
+      "description": "画像からHTMLとCSSを作る3つの方法と、AI HTMLエディタ VibeFront での手順・コツ・注意点。",
+      "inLanguage": "ja",
+      "datePublished": "2026-10-07",
+      "dateModified": "2026-10-07",
+      "image": "https://mojosoftjp.github.io/vibefront/ss1.png",
+      "author": {"@type": "Organization", "@id": "https://mojosoft.biz/#organization", "name": "Mojosoft", "url": "https://mojosoft.biz/"},
+      "publisher": {"@type": "Organization", "@id": "https://mojosoft.biz/#organization", "name": "Mojosoft", "url": "https://mojosoft.biz/"},
+      "mainEntityOfPage": "https://mojosoftjp.github.io/vibefront/ja/guide/image-to-html.html",
+      "about": {"@id": "https://mojosoftjp.github.io/vibefront/ja/#software"}
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "VibeFront", "item": "https://mojosoftjp.github.io/vibefront/ja/"},
+        {"@type": "ListItem", "position": 2, "name": "画像からHTMLを作る方法", "item": "https://mojosoftjp.github.io/vibefront/ja/guide/image-to-html.html"}
+      ]
+    }
+  ]
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#06060f;color:rgba(240,240,245,.8);line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:#22d3ee;text-decoration:none}
+a:hover{text-decoration:underline}
+.container{max-width:760px;margin:0 auto;padding:72px 24px 96px}
+h1{font-size:1.9rem;font-weight:800;color:#f0f0f5;letter-spacing:-.02em;line-height:1.4;margin-bottom:12px}
+h2{font-size:1.3rem;font-weight:700;color:#f0f0f5;margin-top:44px;margin-bottom:14px;padding-top:8px;border-top:1px solid rgba(255,255,255,.08)}
+h3{font-size:1.02rem;font-weight:700;color:#f0f0f5;margin-top:24px;margin-bottom:10px}
+p,ul,ol{margin-bottom:16px;font-size:.95rem}
+ul,ol{padding-left:22px}
+li{margin-bottom:6px}
+strong{color:#f0f0f5}
+code{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);padding:1px 6px;border-radius:4px;font-size:.85rem;color:#c084fc}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:.88rem;color:rgba(240,240,245,.4);margin-bottom:28px;font-weight:500}
+.back:hover{color:rgba(240,240,245,.7);text-decoration:none}
+.lead{font-size:1rem;color:rgba(240,240,245,.85)}
+.date{color:rgba(240,240,245,.35);font-size:.85rem;margin-bottom:28px}
+.toc{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px 20px;margin:24px 0 8px}
+.toc p{margin-bottom:6px;font-weight:700;color:#f0f0f5;font-size:.9rem}
+.toc ol{margin-bottom:0;font-size:.9rem}
+table{width:100%;border-collapse:collapse;margin:8px 0 20px;font-size:.88rem}
+th,td{border-bottom:1px solid rgba(255,255,255,.08);padding:10px 8px;text-align:left;vertical-align:top}
+th{color:#f0f0f5;font-weight:700;background:rgba(255,255,255,.03)}
+.callout{border-left:3px solid #22d3ee;background:rgba(34,211,238,.06);padding:12px 16px;border-radius:0 10px 10px 0;margin:16px 0 20px;font-size:.92rem}
+.callout.warn{border-left-color:#f59e0b;background:rgba(245,158,11,.07)}
+.steps{counter-reset:s;list-style:none;padding-left:0}
+.steps li{counter-increment:s;position:relative;padding-left:40px;margin-bottom:14px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:2px;width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#a855f7,#22d3ee);color:#fff;font-weight:800;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+.cta{margin-top:36px;padding:24px;border-radius:16px;border:1px solid rgba(168,85,247,.35);background:linear-gradient(135deg,rgba(168,85,247,.10),rgba(34,211,238,.06))}
+.cta p{margin-bottom:12px}
+.btn{display:inline-block;padding:10px 22px;border-radius:999px;font-weight:700;font-size:.9rem;margin:4px 8px 4px 0}
+.btn-main{background:linear-gradient(135deg,#a855f7,#6366f1,#22d3ee);color:#fff}
+.btn-sub{border:1px solid rgba(255,255,255,.18);color:#f0f0f5}
+.btn:hover{text-decoration:none;opacity:.9}
+.faq h3{margin-top:18px}
+.footer-note{margin-top:40px;font-size:.82rem;color:rgba(240,240,245,.4)}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <a href="../" class="back">&larr; VibeFront トップに戻る</a>
+
+  <h1>スクリーンショットやデザインカンプからHTMLを作る方法</h1>
+  <p class="date">公開: 2026年10月7日 ／ Mojosoft</p>
+
+  <p class="lead">「このデザインをWebページにしたい」「手描きのラフからたたき台のHTMLを作りたい」——画像からHTMLとCSSを作る方法は、大きく分けて3つあります。この記事では、それぞれの向き・不向きと、AI HTMLエディタ <strong>VibeFront</strong> を使った具体的な手順、うまく再現させるコツを紹介します。</p>
+
+  <div class="toc">
+    <p>目次</p>
+    <ol>
+      <li><a href="#methods">画像からHTMLを作る3つの方法</a></li>
+      <li><a href="#chat">AIチャット（Web版）で作る手順と注意点</a></li>
+      <li><a href="#vibefront">VibeFrontで作る手順</a></li>
+      <li><a href="#tips">うまく再現させるコツ</a></li>
+      <li><a href="#cost">費用とデータの扱い</a></li>
+      <li><a href="#faq">よくある質問</a></li>
+    </ol>
+  </div>
+
+  <h2 id="methods">画像からHTMLを作る3つの方法</h2>
+  <table>
+    <tr><th>方法</th><th>向いている人・場面</th><th>気をつけること</th></tr>
+    <tr><td><strong>手で書く</strong></td><td>HTML・CSSに慣れていて、細部まで自分で決めたい</td><td>時間がかかる。たたき台づくりには不向き</td></tr>
+    <tr><td><strong>AIチャット（Web版）に画像を貼る</strong></td><td>まず無料で試したい、1ページだけ作りたい</td><td>生成されたコードをコピーしてファイルに貼り、別のブラウザで表示を確認する往復が必要。修正のたびに全文を貼り直しがち</td></tr>
+    <tr><td><strong>AI HTMLエディタ（VibeFront）</strong></td><td>画像から作ったHTMLを、そのままプレビューしながら直して仕上げたい</td><td>Windows用のデスクトップアプリ。AIの利用には各AIのAPIキーが必要（Google Geminiには無料枠あり）</td></tr>
+  </table>
+  <p>デザインツールで作ったデータがある場合は、そのツールのコード書き出し機能やプラグインを使う方法もあります。ここでは、<strong>画像（スクリーンショット・デザインカンプの書き出し画像・手描きのラフの写真）しか手元にない場合</strong>を前提にしています。</p>
+
+  <h2 id="chat">AIチャット（Web版）で作る手順と注意点</h2>
+  <p>ChatGPT・Claude・Gemini などのAIチャットの多くは、画像を添付できます。もっとも手軽なのはこの方法です。</p>
+  <ol class="steps">
+    <li>AIチャットに画像を添付し、「この画像のデザインをHTMLとCSSで再現して。1つのHTMLファイルにまとめて」のように頼む</li>
+    <li>出力されたコードをコピーし、テキストエディタで <code>index.html</code> などの名前で保存する</li>
+    <li>ブラウザで開いて確認し、気になる点をAIに伝えて直してもらう</li>
+  </ol>
+  <div class="callout warn">
+    <strong>つまずきやすい点</strong><br>
+    修正を重ねると「どの版が最新か」が分かりにくくなり、毎回コード全体をコピーし直す手間が増えます。長いページでは出力が途中で切れることもあります。
+  </div>
+
+  <h2 id="vibefront">VibeFrontで作る手順</h2>
+  <p>VibeFrontは、AIチャットとHTMLコードエディタ、リアルタイムプレビューを1つにしたWindows用のアプリです。画像からHTMLを作り、そのまま見た目を確認しながら仕上げられます。</p>
+  <ol class="steps">
+    <li><strong>AIを設定する</strong> — メニューの「AI → AI設定」で、画像を読み取れるAI（Google Gemini、OpenAI、Anthropic Claude のいずれか）とAPIキーを設定します。初めての方には無料枠のある Gemini（既定は Gemini 3.8 Flash）がおすすめです。設定方法は<a href="../help.html#ai-gemini">ヘルプ</a>にあります。</li>
+    <li><strong>画像を添付する</strong> — AIチャットパネルの「🖼 画像」ボタンを押すか、画像をチャット欄にドラッグ＆ドロップします。添付した画像はサムネイルで確認でき、「✕」で外せます。</li>
+    <li><strong>目的に合ったテンプレートを選ぶ</strong> — 「テンプレート」から、元の画像を<strong>忠実に再現</strong>したいときは「画像→HTML変換」、手描きのラフをもとに<strong>デザインを整えたページ</strong>にしたいときは「ラフスケッチ→Webデザイン」を選びます。どちらも「追加指示」欄に、色・フォント・載せたい文章などの要望を書き足せます。テンプレートを使わずに画像だけを送ると、「この画像のデザインをHTML+CSSで再現」として処理されます。</li>
+    <li><strong>生成されたHTMLを適用する</strong> — 返ってきたコードの「適用」ボタンを押すと、エディタに反映され、プレビューにすぐ表示されます。</li>
+    <li><strong>プレビューを見ながら直す</strong> — 「見出しをもっと大きく」「スマホで縦並びに」のようにチャットで頼むと、AIは<strong>変更点だけ</strong>を提案します。内容を確認して「適用」を押すだけで直せます。モバイル（375px）・タブレット（768px）・デスクトップ（1200px）の表示切り替えで、レスポンシブも確認できます。</li>
+    <li><strong>保存する</strong> — HTMLファイルとして保存します。文字コード（UTF-8・Shift-JIS など）も指定できます。</li>
+  </ol>
+
+  <h2 id="tips">うまく再現させるコツ</h2>
+  <ul>
+    <li><strong>解像度の高い画像を使う</strong> — 小さな文字や細い線が読み取れるよう、拡大しなくても読める大きさの画像にします。</li>
+    <li><strong>長いページは分けて送る</strong> — ヘッダー、メインビジュアル、料金表…とセクションごとに作り、最後につなげると崩れにくく、出力が途中で切れることも防げます。</li>
+    <li><strong>画像から読み取れない情報は言葉で補う</strong> — 色のコード、フォント名、リンク先、実際に載せる文章などは「追加指示」に書きます。</li>
+    <li><strong>レスポンシブ対応は明示する</strong> — 「スマホでは1列に並べて」など、画面幅ごとの希望を書いておくと、手直しが減ります。</li>
+    <li><strong>モデルを使い分ける</strong> — 速さと費用を重視するなら Gemini 3.8 Flash、仕上がりの精度を重視するなら Claude Opus 5.5 や GPT-6.1 Sol が候補です（いずれも VibeFront 1.3.0 の AI設定で選べます）。</li>
+  </ul>
+
+  <h2 id="cost">費用とデータの扱い</h2>
+  <ul>
+    <li>VibeFront は買い切り（個人版 ¥2,950）で、月額料金はかかりません。AIの利用料は、お使いのAIの料金体系に従います（Google Gemini には無料枠があります）。</li>
+    <li>添付した画像と指示文は、AI設定で選んだAIのAPIに送信されます。APIキーはお使いのPCにのみ保存されます。</li>
+    <li>ローカルLLM（Ollama・LM Studio）を使えば外部に送信せずにHTMLを作れますが、多くのローカルモデルは画像を読み取れません。画像からの作成には、上記の3社のAIをおすすめします。</li>
+  </ul>
+  <div class="callout warn">
+    <strong>権利について</strong><br>
+    他社のWebサイトのデザイン・画像・文章を、許可なくそのまま複製して公開しないでください。ご自身のデザインカンプや手描きのラフ、権利を持っている素材からの作成にご利用ください。
+  </div>
+
+  <div class="faq">
+    <h2 id="faq">よくある質問</h2>
+    <h3>Q. 出来上がるのは HTML と CSS だけですか？</h3>
+    <p>はい。1つのHTMLファイル（CSS込み）として作るのが基本です。画像ファイル（ロゴや写真）は、生成後に差し替えてください。ファイルエクスプローラーから画像をエディタにドラッグ＆ドロップすると、<code>&lt;img&gt;</code> タグを自動で挿入できます。</p>
+    <h3>Q. 生成されたHTMLは、そのまま公開できますか？</h3>
+    <p>たたき台としてはそのまま使えることが多いですが、公開前にリンク先・文章・画像の差し替えと、各画面幅での表示を確認してください。</p>
+    <h3>Q. 出力が途中で切れてしまいました</h3>
+    <p>AIが一度に出力できる量の上限に達しています。VibeFront ではその旨が表示されます。「続けて」と送るか、セクションごとに分けて作ってください。</p>
+    <h3>Q. 無料で試せますか？</h3>
+    <p>ダウンロード版は15日間、すべての機能を試用できます。AIは、Google Gemini の無料枠を使えば費用をかけずに試せます。</p>
+  </div>
+
+  <div class="cta">
+    <p><strong>VibeFront で、画像からHTMLを作ってみませんか。</strong><br>AIチャット・コードエディタ・リアルタイムプレビューが1つになったWindows用のAI HTMLエディタです。</p>
+    <a class="btn btn-main" href="https://apps.microsoft.com/detail/9MXV2LWVXHT6">Microsoft Store で入手</a>
+    <a class="btn btn-sub" href="../purchase.html">ダウンロード版（15日間試用）</a>
+    <a class="btn btn-sub" href="../">VibeFront の詳細を見る</a>
+  </div>
+
+  <p class="footer-note">記事の内容は VibeFront 1.3.0（2026年10月）時点のものです。各AIの機能・料金は変わることがあります。</p>
+</div>
+
+</body>
+</html>

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://mojosoftjp.github.io/vibefront/</loc></url>
-  <url><loc>https://mojosoftjp.github.io/vibefront/help.html</loc></url>
-  <url><loc>https://mojosoftjp.github.io/vibefront/ja/</loc></url>
-  <url><loc>https://mojosoftjp.github.io/vibefront/privacy.html</loc></url>
-  <url><loc>https://mojosoftjp.github.io/vibefront/purchase.html</loc></url>
+  <url><loc>https://mojosoftjp.github.io/vibefront/</loc><lastmod>2026-10-07</lastmod></url>
+  <url><loc>https://mojosoftjp.github.io/vibefront/ja/</loc><lastmod>2026-10-07</lastmod></url>
+  <url><loc>https://mojosoftjp.github.io/vibefront/help.html</loc><lastmod>2026-10-07</lastmod></url>
+  <url><loc>https://mojosoftjp.github.io/vibefront/ja/help.html</loc><lastmod>2026-10-07</lastmod></url>
+  <url><loc>https://mojosoftjp.github.io/vibefront/purchase.html</loc><lastmod>2026-10-07</lastmod></url>
+  <url><loc>https://mojosoftjp.github.io/vibefront/ja/purchase.html</loc><lastmod>2026-10-07</lastmod></url>
+  <url><loc>https://mojosoftjp.github.io/vibefront/privacy.html</loc><lastmod>2026-10-07</lastmod></url>
+  <url><loc>https://mojosoftjp.github.io/vibefront/ja/privacy.html</loc><lastmod>2026-10-07</lastmod></url>
+  <url><loc>https://mojosoftjp.github.io/vibefront/ja/guide/image-to-html.html</loc><lastmod>2026-10-07</lastmod></url>
 </urlset>

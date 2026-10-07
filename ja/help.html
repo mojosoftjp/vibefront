@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/png" href="../icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ヘルプ — VibeFront AI HTMLエディタ</title>
+<meta name="theme-color" content="#0a0a1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-deep:#06060f;--bg-card:rgba(255,255,255,.04);--border:rgba(255,255,255,.08);
+  --border-hover:rgba(255,255,255,.15);--text-white:#f0f0f5;--text-muted:rgba(240,240,245,.55);
+  --text-dim:rgba(240,240,245,.35);--accent-purple:#a855f7;--accent-cyan:#22d3ee;
+  --accent-blue:#6366f1;--gradient-text:linear-gradient(135deg,#c084fc,#818cf8,#67e8f9);
+  --radius:12px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg-deep);color:var(--text-muted);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent-cyan);text-decoration:none}
+a:hover{text-decoration:underline}
+::selection{background:rgba(168,85,247,.35);color:#fff}
+
+/* Nav */
+.top-bar{position:fixed;top:0;left:0;right:0;z-index:9998;height:56px;display:flex;align-items:center;padding:0 32px;background:rgba(6,6,15,.8);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.top-bar a.back{display:flex;align-items:center;gap:8px;color:var(--text-dim);font-size:.88rem;font-weight:500;transition:color .2s}
+.top-bar a.back:hover{color:var(--text-white);text-decoration:none}
+.top-bar .title{margin-left:auto;font-size:.88rem;font-weight:600;color:var(--text-white)}
+
+/* Language */
+.lang-toggle{position:fixed;top:12px;right:20px;z-index:10000;background:rgba(255,255,255,.06);border:1px solid var(--border);border-radius:999px;padding:6px 16px;font-size:.8rem;font-weight:600;color:var(--text-dim);cursor:pointer;backdrop-filter:blur(12px)}
+.lang-toggle:hover{background:rgba(255,255,255,.12);color:var(--text-white)}
+[data-lang="ja"] .en,[data-lang="en"] .ja{display:none!important}
+
+/* Layout */
+.layout{display:flex;max-width:1200px;margin:0 auto;padding-top:56px}
+.sidebar{position:fixed;top:56px;left:max(0px,calc((100vw - 1200px)/2));width:260px;height:calc(100vh - 56px);overflow-y:auto;padding:24px 20px;border-right:1px solid var(--border);background:rgba(6,6,15,.95)}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:4px}
+.sidebar .nav-group{margin-bottom:20px}
+.sidebar .nav-group-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px}
+.sidebar .nav-item{display:block;padding:6px 12px;border-radius:6px;font-size:.85rem;color:var(--text-muted);transition:all .15s;margin-bottom:2px}
+.sidebar .nav-item:hover{background:rgba(255,255,255,.05);color:var(--text-white);text-decoration:none}
+.sidebar .nav-item.active{background:rgba(168,85,247,.12);color:var(--accent-purple)}
+.content{margin-left:260px;flex:1;padding:40px 48px 80px;min-height:calc(100vh - 56px)}
+
+@media(max-width:900px){
+  .sidebar{display:none}
+  .content{margin-left:0;padding:32px 20px 60px}
+}
+
+/* Content styles */
+.content h1{font-size:2rem;font-weight:800;color:var(--text-white);letter-spacing:-.03em;margin-bottom:8px}
+.content .subtitle{color:var(--text-dim);font-size:.9rem;margin-bottom:40px}
+.content h2{font-size:1.4rem;font-weight:700;color:var(--text-white);letter-spacing:-.02em;margin-top:56px;margin-bottom:16px;padding-top:24px;border-top:1px solid var(--border)}
+.content h2:first-of-type{margin-top:0;padding-top:0;border-top:none}
+.content h3{font-size:1.05rem;font-weight:600;color:var(--text-white);margin-top:32px;margin-bottom:10px}
+.content p{margin-bottom:16px;font-size:.92rem;line-height:1.75}
+.content ul,.content ol{margin-bottom:16px;padding-left:24px}
+.content li{margin-bottom:8px;font-size:.92rem}
+.content strong{color:var(--text-white)}
+.content code{background:rgba(255,255,255,.06);border:1px solid var(--border);padding:2px 7px;border-radius:4px;font-size:.84rem;font-family:'SF Mono','Fira Code',monospace;color:#c084fc}
+
+/* Cards */
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:16px}
+.card h4{font-size:.95rem;font-weight:700;color:var(--text-white);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.card p{margin-bottom:8px;font-size:.88rem}
+.card .tag{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.72rem;font-weight:600;letter-spacing:.04em}
+.tag-free{background:rgba(34,211,238,.12);color:var(--accent-cyan);border:1px solid rgba(34,211,238,.2)}
+.tag-paid{background:rgba(251,191,36,.1);color:#fbbf24;border:1px solid rgba(251,191,36,.2)}
+.tag-local{background:rgba(52,211,153,.1);color:#34d399;border:1px solid rgba(52,211,153,.2)}
+.tag-recommend{background:rgba(168,85,247,.12);color:var(--accent-purple);border:1px solid rgba(168,85,247,.2)}
+
+/* Steps */
+.step-list{counter-reset:helpstep;list-style:none;padding-left:0}
+.step-list li{position:relative;padding-left:40px;margin-bottom:20px;font-size:.92rem}
+.step-list li::before{counter-increment:helpstep;content:counter(helpstep);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:rgba(168,85,247,.15);border:1px solid rgba(168,85,247,.25);color:var(--accent-purple);font-weight:700;font-size:.8rem;display:flex;align-items:center;justify-content:center}
+
+/* Callout */
+.callout{border-left:3px solid var(--accent-cyan);background:rgba(34,211,238,.04);padding:16px 20px;border-radius:0 8px 8px 0;margin-bottom:20px;font-size:.88rem}
+.callout.warn{border-left-color:#fbbf24;background:rgba(251,191,36,.04)}
+.callout strong{color:var(--text-white)}
+
+/* Table */
+.model-table{width:100%;border-collapse:collapse;margin-bottom:20px;font-size:.85rem}
+.model-table th{text-align:left;padding:10px 12px;background:rgba(255,255,255,.04);border-bottom:1px solid var(--border);color:var(--text-white);font-weight:600;font-size:.8rem;letter-spacing:.03em}
+.model-table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.04)}
+
+/* Screenshot */
+.help-img{border-radius:var(--radius);border:1px solid var(--border);box-shadow:0 8px 32px rgba(0,0,0,.3);margin:20px 0;max-width:100%}
+
+/* Keyboard */
+kbd{display:inline-block;padding:2px 8px;border-radius:4px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:.82rem;font-family:'SF Mono','Fira Code',monospace;color:var(--text-white);line-height:1.6}
+</style>
+  <link rel="canonical" href="https://mojosoftjp.github.io/vibefront/ja/help.html"><link rel="alternate" href="https://mojosoftjp.github.io/vibefront/help.html" hreflang="en">
+<link rel="alternate" href="https://mojosoftjp.github.io/vibefront/ja/help.html" hreflang="ja">
+<link rel="alternate" href="https://mojosoftjp.github.io/vibefront/help.html" hreflang="x-default">
+
+  <meta name="description" content="VibeFront の公式ヘルプ。AI の設定（Gemini・OpenAI・Claude・ローカル LLM）、推奨モデル、エディタの使い方、ショートカット、よくある質問をまとめています。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:title" content="ヘルプ — VibeFront AI HTMLエディタ">
+  <meta property="og:description" content="VibeFront の公式ヘルプ。AI の設定（Gemini・OpenAI・Claude・ローカル LLM）、推奨モデル、エディタの使い方、ショートカット、よくある質問をまとめています。">
+  <meta property="og:url" content="https://mojosoftjp.github.io/vibefront/ja/help.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Mojosoft">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:title" content="Help — VibeFront AI HTML Editor">
+  <meta name="twitter:description" content="Official VibeFront help. Learn how to configure the application, use its features and follow the operating instructions.">
+  <meta property="og:image" content="https://mojosoftjp.github.io/vibefront/ss1.png">
+  <meta name="twitter:image" content="https://mojosoftjp.github.io/vibefront/ss1.png">
+  <meta property="og:image:alt" content="Help — VibeFront AI HTML Editor">
+  <meta name="twitter:image:alt" content="Help — VibeFront AI HTML Editor">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1264">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body data-lang="ja">
+
+<!-- Language Toggle -->
+<button class="lang-toggle" onclick="toggleLang()">
+  <span class="ja">EN</span>
+</button>
+
+<!-- Top Bar -->
+<div class="top-bar">
+  <a href="./" class="back">&larr; <span class="ja">トップに戻る</span></a>
+  <span class="title">
+    <span class="ja">VibeFront ヘルプ</span>
+    
+  </span>
+</div>
+
+<!-- Layout -->
+<div class="layout">
+
+<!-- Sidebar Navigation -->
+<aside class="sidebar">
+  <div class="nav-group">
+    <div class="nav-group-label"><span class="ja">はじめに</span></div>
+    <a href="#overview" class="nav-item"><span class="ja">VibeFrontとは</span></a>
+    <a href="#quickstart" class="nav-item"><span class="ja">クイックスタート</span></a>
+  </div>
+  <div class="nav-group">
+    <div class="nav-group-label"><span class="ja">AI設定</span></div>
+    <a href="#ai-overview" class="nav-item"><span class="ja">AI機能の概要</span></a>
+    <a href="#ai-recommended" class="nav-item"><span class="ja">推奨AIモデル</span></a>
+    <a href="#ai-gemini" class="nav-item">Google Gemini</a>
+    <a href="#ai-openai" class="nav-item">OpenAI</a>
+    <a href="#ai-anthropic" class="nav-item">Anthropic (Claude)</a>
+    <a href="#ai-ollama" class="nav-item"><span class="ja">Ollama (ローカル)</span></a>
+    <a href="#ai-lmstudio" class="nav-item"><span class="ja">LM Studio (ローカル)</span></a>
+  </div>
+  <div class="nav-group">
+    <div class="nav-group-label"><span class="ja">エディタ</span></div>
+    <a href="#editor-views" class="nav-item"><span class="ja">表示モード</span></a>
+    <a href="#editor-emmet" class="nav-item"><span class="ja">Emmet展開</span></a>
+    <a href="#editor-preview" class="nav-item"><span class="ja">プレビュー同期</span></a>
+    <a href="#editor-encoding" class="nav-item"><span class="ja">文字コード</span></a>
+  </div>
+  <div class="nav-group">
+    <div class="nav-group-label"><span class="ja">その他</span></div>
+    <a href="guide/image-to-html.html" class="nav-item"><span class="ja">画像からHTMLを作る方法</span></a>
+    <a href="#shortcuts" class="nav-item"><span class="ja">ショートカットキー</span></a>
+    <a href="#faq" class="nav-item">FAQ</a>
+    <a href="#support" class="nav-item"><span class="ja">サポート</span></a>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="content">
+
+<!-- ==================== Getting Started ==================== -->
+<h1 id="overview">
+  <span class="ja">VibeFront ヘルプ</span>
+  
+</h1>
+<p class="subtitle">
+  <span class="ja">AI搭載HTMLエディタの使い方ガイド</span>
+  
+</p>
+
+<p>
+  <span class="ja">VibeFrontは、AIを搭載したWindows向けデスクトップHTMLエディタです。コードエディタ（AvalonEdit）とリアルタイムプレビュー（WebView2）を組み合わせ、AIによるHTML生成・校正・翻訳・最適化機能を備えています。</span>
+  
+</p>
+
+<h2 id="quickstart">
+  <span class="ja">クイックスタート</span>
+  
+</h2>
+
+<ol class="step-list">
+  <li>
+    <strong><span class="ja">アプリを起動</span></strong><br>
+    <span class="ja">Microsoft Storeからインストール後、スタートメニューから「VibeFront」を起動します。アカウント登録は不要です。</span>
+    
+  </li>
+  <li>
+    <strong><span class="ja">AI設定（推奨）</span></strong><br>
+    <span class="ja">メニューの <strong>AI → AI設定</strong> からお好みのAIプロバイダーとAPIキーを設定します。初めての方は <a href="#ai-gemini">Google Gemini（無料）</a> がおすすめです。</span>
+    
+  </li>
+  <li>
+    <strong><span class="ja">HTMLを編集</span></strong><br>
+    <span class="ja">コードを書いてリアルタイムプレビューで確認。AIに「お問い合わせフォームを作って」と頼むこともできます。</span>
+    
+  </li>
+</ol>
+
+<!-- ==================== AI Setup ==================== -->
+
+<h2 id="ai-overview">
+  <span class="ja">AI機能の概要</span>
+  
+</h2>
+
+<p>
+  <span class="ja">VibeFrontのAI機能は以下の4社のAIプロバイダーに対応しています。お好みのプロバイダーを1つ設定するだけで、すべてのAI機能（HTML生成、テンプレート、校正、翻訳、最適化、画像→HTML変換）が使えます。</span>
+  
+</p>
+
+<div class="callout">
+  <strong><span class="ja">APIキーについて</span></strong><br>
+  <span class="ja">APIキーはお客様のPC上のみに保存され（<code>%LOCALAPPDATA%\VibeFront\ai_settings.json</code>）、外部には一切送信されません。AI利用時のみ、お客様が選んだプロバイダーに直接送信されます。</span>
+  
+</div>
+
+<h2 id="ai-recommended">
+  <span class="ja">推奨AIモデル</span>
+  
+</h2>
+
+<p>
+  <span class="ja">以下は、VibeFrontでのHTML編集に適したおすすめのAIモデルです。</span>
+  
+</p>
+
+<table class="model-table">
+  <thead>
+    <tr>
+      <th><span class="ja">プロバイダー</span></th>
+      <th><span class="ja">推奨モデル</span></th>
+      <th><span class="ja">特徴</span></th>
+      <th><span class="ja">費用</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Google Gemini</strong></td>
+      <td>gemini-3.8-flash</td>
+      <td><span class="ja">VibeFrontの既定・高速・高品質・画像対応。初めての方におすすめ</span></td>
+      <td><span class="tag tag-free"><span class="ja">無料枠あり</span></span></td>
+    </tr>
+    <tr>
+      <td><strong>Google Gemini</strong></td>
+      <td>gemini-3.1-pro-preview</td>
+      <td><span class="ja">最高性能（プレビュー版）</span></td>
+      <td><span class="tag tag-paid"><span class="ja">有料枠のみ</span></span></td>
+    </tr>
+    <tr>
+      <td><strong>OpenAI</strong></td>
+      <td>gpt-6.1-sol</td>
+      <td><span class="ja">VibeFrontの既定・バランス良好・画像対応</span></td>
+      <td><span class="tag tag-paid"><span class="ja">従量課金</span></span></td>
+    </tr>
+    <tr>
+      <td><strong>OpenAI</strong></td>
+      <td>gpt-6-luna</td>
+      <td><span class="ja">高速・最も低コスト</span></td>
+      <td><span class="tag tag-paid"><span class="ja">従量課金</span></span></td>
+    </tr>
+    <tr>
+      <td><strong>Anthropic</strong></td>
+      <td>claude-opus-5-5</td>
+      <td><span class="ja">VibeFrontの既定・最高性能・コード生成が得意</span></td>
+      <td><span class="tag tag-paid"><span class="ja">従量課金</span></span></td>
+    </tr>
+    <tr>
+      <td><strong>Anthropic</strong></td>
+      <td>claude-sonnet-5-5</td>
+      <td><span class="ja">高速・バランス型・コード生成が得意</span></td>
+      <td><span class="tag tag-paid"><span class="ja">従量課金</span></span></td>
+    </tr>
+    <tr>
+      <td><strong>Ollama</strong></td>
+      <td>qwen3:8b</td>
+      <td><span class="ja">ローカル・無料・高品質</span></td>
+      <td><span class="tag tag-local"><span class="ja">完全無料</span></span></td>
+    </tr>
+    <tr>
+      <td><strong>Ollama</strong></td>
+      <td>llama3.1:8b</td>
+      <td><span class="ja">ローカル・汎用</span></td>
+      <td><span class="tag tag-local"><span class="ja">完全無料</span></span></td>
+    </tr>
+    <tr>
+      <td><strong>LM Studio</strong></td>
+      <td>Qwen3-8B-GGUF</td>
+      <td><span class="ja">GUI操作・初心者向け</span></td>
+      <td><span class="tag tag-local"><span class="ja">完全無料</span></span></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+  <span class="ja">このほか、AI設定では GPT-6 Astra（最高性能・高コスト）、Claude Haiku 4.5（超高速・低コスト）、Gemini 3.5 Flash Lite（低コスト・安定版）も選択できます。</span>
+  
+</p>
+
+<div class="callout">
+  <strong><span class="ja">初心者へのおすすめ</span></strong><br>
+  <span class="ja"><strong>Google Gemini</strong> が最もおすすめです。無料のAPIキーが簡単に取得でき、品質も高く、画像→HTML変換にも対応しています。プライバシーを重視する場合は <strong>Ollama</strong>（ローカルLLM）がおすすめです。</span>
+  
+</div>
+
+<!-- ===== Gemini ===== -->
+<h2 id="ai-gemini">
+  Google Gemini <span class="tag tag-recommend"><span class="ja">おすすめ</span></span>
+</h2>
+
+<p>
+  <span class="ja">Google Geminiは、VibeFrontの既定モデル Gemini 3.8 Flash を無料枠で使えるため、初めてAIを使う方に最適です。</span>
+  
+</p>
+
+<h3><span class="ja">APIキーの取得手順</span></h3>
+<ol class="step-list">
+  <li>
+    <span class="ja"><a href="https://aistudio.google.com/" target="_blank" rel="noopener">Google AI Studio</a> にアクセスし、Googleアカウントでログインします。</span>
+    
+  </li>
+  <li>
+    <span class="ja">左メニューの「Get API key」をクリックし、「Create API key」ボタンを押します。</span>
+    
+  </li>
+  <li>
+    <span class="ja">表示されたAPIキー（<code>AIza...</code> で始まる文字列）をコピーします。</span>
+    
+  </li>
+  <li>
+    <span class="ja">VibeFrontの <strong>AI → AI設定</strong> で「Google Gemini」を選択し、コピーしたAPIキーを貼り付けて「保存」を押します。</span>
+    
+  </li>
+</ol>
+
+<div class="callout">
+  <strong><span class="ja">無料枠について</span></strong><br>
+  <span class="ja">Gemini 3.8 Flash は無料枠で利用できます。1分・1日あたりのリクエスト上限はGoogleが設定しており変更されることがあるため、最新の値は <a href="https://aistudio.google.com/" target="_blank" rel="noopener">Google AI Studio</a> でご確認ください。なお、Gemini 3.1 Pro (Preview) は無料枠の対象外（有料枠のみ）です。</span>
+  
+</div>
+
+<!-- ===== OpenAI ===== -->
+<h2 id="ai-openai">OpenAI (ChatGPT)</h2>
+
+<p>
+  <span class="ja">OpenAIのGPTシリーズは、最も広く使われているAIモデルです。有料ですが、高品質なHTML生成が可能です。</span>
+  
+</p>
+
+<h3><span class="ja">APIキーの取得手順</span></h3>
+<ol class="step-list">
+  <li>
+    <span class="ja"><a href="https://platform.openai.com/" target="_blank" rel="noopener">OpenAI Platform</a> にアクセスし、アカウントを作成またはログインします。</span>
+    
+  </li>
+  <li>
+    <span class="ja"><strong>API keys</strong> ページで「Create new secret key」をクリックします。</span>
+    
+  </li>
+  <li>
+    <span class="ja">表示されたキー（<code>sk-...</code>）をコピーします。<strong>このキーは二度と表示されない</strong>ので、安全な場所にも控えてください。</span>
+    
+  </li>
+  <li>
+    <span class="ja">VibeFrontの AI設定 で「OpenAI」を選択し、キーを貼り付けて保存します。</span>
+    
+  </li>
+</ol>
+
+<div class="callout warn">
+  <strong><span class="ja">料金について</span></strong><br>
+  <span class="ja">OpenAI APIは従量課金です。最初に$5〜$10程度のクレジットを追加する必要があります。AI設定でモデルを GPT-6 Luna（gpt-6-luna）にすると非常に安価で、HTML編集での一般的な利用なら月$1以下で済みます。</span>
+  
+</div>
+
+<div class="callout">
+  <strong><span class="ja">組織の本人確認（Verify Organization）について</span></strong><br>
+  <span class="ja">OpenAIでは、組織の本人確認が済んでいないと一部のモデルで応答の逐次表示（ストリーミング）が許可されません。VibeFront v1.3.0 はこの場合、自動で一括表示に切り替えます（応答の生成が終わってからまとめて表示されるため、表示まで少し時間がかかります）。本人確認は OpenAI Platform の組織設定から行えます。</span>
+  
+</div>
+
+<!-- ===== Anthropic ===== -->
+<h2 id="ai-anthropic">Anthropic (Claude)</h2>
+
+<p>
+  <span class="ja">Anthropicのクロードは、特にコード生成に優れたAIです。</span>
+  
+</p>
+
+<h3><span class="ja">APIキーの取得手順</span></h3>
+<ol class="step-list">
+  <li>
+    <span class="ja"><a href="https://console.anthropic.com/" target="_blank" rel="noopener">Anthropic Console</a> にアクセスし、アカウントを作成します。</span>
+    
+  </li>
+  <li>
+    <span class="ja"><strong>API Keys</strong> ページで新しいキーを作成し、コピーします。</span>
+    
+  </li>
+  <li>
+    <span class="ja">VibeFrontのAI設定で「Anthropic (Claude)」を選択し、キーを貼り付けて保存します。</span>
+    
+  </li>
+</ol>
+
+<div class="callout warn">
+  <strong><span class="ja">料金について</span></strong><br>
+  <span class="ja">Anthropic APIは従量課金です。既定の Claude Opus 5.5 は最高性能のモデルです。費用を抑えたい場合は、AI設定で Claude Sonnet 5.5 や Claude Haiku 4.5 を選んでください。v1.3.0 からプロンプトキャッシュに対応したため、同じ会話で続けて（5分以内に）送信すると、それまでの会話の再送分が割安になります（会話がごく短い場合は対象外です）。</span>
+  
+</div>
+
+<!-- ===== Ollama ===== -->
+<h2 id="ai-ollama">
+  <span class="ja">Ollama（ローカルLLM）</span>
+  
+  <span class="tag tag-local" style="margin-left:8px"><span class="ja">完全無料・オフライン</span></span>
+</h2>
+
+<p>
+  <span class="ja"><strong>Ollama</strong> を使うと、AIモデルをお使いのPC上で直接動かせます。インターネット接続不要で、データが外部に送信されることは一切ありません。APIキーも不要です。</span>
+  
+</p>
+
+<div class="callout">
+  <strong><span class="ja">必要なPCスペック</span></strong><br>
+  <span class="ja">8Bパラメータモデル（推奨）: <strong>RAM 8GB以上</strong>、GPU搭載PCならさらに高速。一般的なノートPCでもCPUのみで動作可能です（やや遅くなります）。</span>
+  
+</div>
+
+<h3><span class="ja">Ollamaの導入手順</span></h3>
+<ol class="step-list">
+  <li>
+    <strong><span class="ja">Ollamaをインストール</span></strong><br>
+    <span class="ja"><a href="https://ollama.com/download" target="_blank" rel="noopener">ollama.com/download</a> からWindows版をダウンロードしてインストールします。インストーラーの指示に従うだけでOKです。</span>
+    
+  </li>
+  <li>
+    <strong><span class="ja">AIモデルをダウンロード</span></strong><br>
+    <span class="ja">コマンドプロンプト（またはPowerShell）を開いて、以下のコマンドを実行します：</span>
+    
+    <br><br>
+    <code>ollama pull qwen3:8b</code>
+    <br><br>
+    <span class="ja">初回は数GBのダウンロードが発生します（Wi-Fi環境推奨）。ダウンロードが完了すれば、以降はオフラインで使えます。</span>
+    
+  </li>
+  <li>
+    <strong><span class="ja">Ollamaを起動</span></strong><br>
+    <span class="ja">Ollamaは通常、インストール後に自動で起動しています（タスクトレイにアイコンが表示されます）。起動していない場合は、スタートメニューから「Ollama」を起動してください。</span>
+    
+  </li>
+  <li>
+    <strong><span class="ja">VibeFrontで設定</span></strong><br>
+    <span class="ja">VibeFrontの <strong>AI → AI設定</strong> で以下のように設定します：</span>
+    
+    <br><br>
+    <table class="model-table">
+      <tr><td><strong><span class="ja">プロバイダー</span></strong></td><td><span class="ja">OpenAI互換</span></td></tr>
+      <tr><td><strong><span class="ja">ベースURL</span></strong></td><td><code>http://localhost:11434</code></td></tr>
+      <tr><td><strong><span class="ja">モデルID</span></strong></td><td><code>qwen3:8b</code></td></tr>
+      <tr><td><strong><span class="ja">APIキー</span></strong></td><td><span class="ja">空欄でOK</span></td></tr>
+    </table>
+  </li>
+  <li>
+    <strong><span class="ja">接続テスト</span></strong><br>
+    <span class="ja">「接続テスト」ボタンを押して「接続成功!」と表示されれば設定完了です。</span>
+    
+  </li>
+</ol>
+
+<h3><span class="ja">おすすめのOllamaモデル</span></h3>
+
+<div class="card">
+  <h4>qwen3:8b <span class="tag tag-recommend"><span class="ja">おすすめ</span></span></h4>
+  <p><span class="ja">Alibaba開発。HTML/CSSのコード生成に非常に優秀。8GBモデルながら高品質な出力。日本語も対応。</span></p>
+  <p><code>ollama pull qwen3:8b</code></p>
+</div>
+
+<div class="card">
+  <h4>llama3.1:8b</h4>
+  <p><span class="ja">Meta開発の汎用モデル。安定した品質で、多言語対応。</span></p>
+  <p><code>ollama pull llama3.1:8b</code></p>
+</div>
+
+<div class="card">
+  <h4>codellama:13b</h4>
+  <p><span class="ja">コード特化モデル。HTMLのコード生成が得意。RAMに余裕がある場合（16GB+）におすすめ。</span></p>
+  <p><code>ollama pull codellama:13b</code></p>
+</div>
+
+<div class="card">
+  <h4>phi3:3.8b</h4>
+  <p><span class="ja">Microsoft開発の超軽量モデル。RAMが少ないPCでも動作。品質は8Bモデルに劣りますが、高速です。</span></p>
+  <p><code>ollama pull phi3:3.8b</code></p>
+</div>
+
+<!-- ===== LM Studio ===== -->
+<h2 id="ai-lmstudio">
+  <span class="ja">LM Studio（ローカルLLM）</span>
+  
+  <span class="tag tag-local" style="margin-left:8px"><span class="ja">GUI操作・初心者向け</span></span>
+</h2>
+
+<p>
+  <span class="ja"><strong>LM Studio</strong> は、ローカルLLMをGUI（グラフィカルな画面）で簡単に管理・実行できるアプリです。コマンド操作に不慣れな方に特におすすめです。</span>
+  
+</p>
+
+<h3><span class="ja">LM Studioの導入手順</span></h3>
+<ol class="step-list">
+  <li>
+    <strong><span class="ja">LM Studioをインストール</span></strong><br>
+    <span class="ja"><a href="https://lmstudio.ai/" target="_blank" rel="noopener">lmstudio.ai</a> からダウンロードしてインストールします。</span>
+    
+  </li>
+  <li>
+    <strong><span class="ja">モデルをダウンロード</span></strong><br>
+    <span class="ja">LM Studioを起動し、検索バーに「<strong>Qwen3 8B</strong>」と入力。表示されたモデル（GGUF形式）のダウンロードボタンを押します。「Q4_K_M」がバランスの良い選択です。</span>
+    
+  </li>
+  <li>
+    <strong><span class="ja">サーバーを起動</span></strong><br>
+    <span class="ja">左メニューの「Local Server」タブをクリック → ダウンロードしたモデルを選択 → 「Start Server」ボタンを押します。画面に <code>http://127.0.0.1:1234</code> と表示されればOKです。</span>
+    
+  </li>
+  <li>
+    <strong><span class="ja">VibeFrontで設定</span></strong><br>
+    <span class="ja">VibeFrontの AI設定 で以下のように設定します：</span>
+    
+    <br><br>
+    <table class="model-table">
+      <tr><td><strong><span class="ja">プロバイダー</span></strong></td><td><span class="ja">OpenAI互換</span></td></tr>
+      <tr><td><strong><span class="ja">ベースURL</span></strong></td><td><code>http://localhost:1234</code></td></tr>
+      <tr><td><strong><span class="ja">モデルID</span></strong></td><td><span class="ja">（LM Studioに表示されているモデル名）</span></td></tr>
+      <tr><td><strong><span class="ja">APIキー</span></strong></td><td><span class="ja">空欄でOK</span></td></tr>
+    </table>
+  </li>
+  <li>
+    <strong><span class="ja">接続テストで確認</span></strong><br>
+    <span class="ja">「接続テスト」をクリックして成功すれば完了です。</span>
+    
+  </li>
+</ol>
+
+<div class="callout">
+  <strong><span class="ja">OllamaとLM Studioの違い</span></strong><br>
+  <span class="ja"><strong>Ollama</strong>: コマンドライン操作。軽量でバックグラウンド動作に最適。技術に慣れた方向け。<br>
+  <strong>LM Studio</strong>: GUI操作。モデルの検索・ダウンロード・起動がすべて画面上でできる。初心者向け。<br>
+  どちらも無料で、VibeFrontとの設定方法はほぼ同じです。</span>
+  
+</div>
+
+<!-- ==================== Editor ==================== -->
+
+<h2 id="editor-views">
+  <span class="ja">表示モード</span>
+  
+</h2>
+
+<p>
+  <span class="ja">VibeFrontには3つの表示モードがあります。ツールバーのボタンまたは表示メニューから切り替えられます。</span>
+  
+</p>
+
+<div class="card">
+  <h4><span class="ja">分割ビュー（デフォルト）</span></h4>
+  <p><span class="ja">コードエディタとプレビューを並べて表示。変更がリアルタイムに反映されます。</span></p>
+</div>
+<div class="card">
+  <h4><span class="ja">コードビュー</span></h4>
+  <p><span class="ja">コードエディタのみ表示。コードに集中したい時に。</span></p>
+</div>
+<div class="card">
+  <h4><span class="ja">プレビュー</span></h4>
+  <p><span class="ja">プレビューのみ表示。表示結果の確認に。テキストを選択するとソースコードの該当箇所にジャンプします。</span></p>
+</div>
+
+<p>
+  <span class="ja">パネルはAvalonDockにより自由にドッキング・フローティング・並べ替えが可能です。レイアウトは自動的に保存されます。</span>
+  
+</p>
+
+<h2 id="editor-emmet">
+  <span class="ja">Emmet展開</span>
+  
+</h2>
+
+<p>
+  <span class="ja">Emmet記法を入力して <kbd>Tab</kbd> キーを押すと、HTMLが自動展開されます。</span>
+  
+</p>
+
+<table class="model-table">
+  <thead>
+    <tr>
+      <th><span class="ja">入力</span></th>
+      <th><span class="ja">展開結果</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><code>div</code></td><td><code>&lt;div&gt;&lt;/div&gt;</code></td></tr>
+    <tr><td><code>div.container</code></td><td><code>&lt;div class="container"&gt;&lt;/div&gt;</code></td></tr>
+    <tr><td><code>ul>li*3</code></td><td><code>&lt;ul&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;</code></td></tr>
+    <tr><td><code>nav>ul>li*5>a</code></td><td><span class="ja">ナビゲーション構造</span></td></tr>
+    <tr><td><code>div#app>header+main+footer</code></td><td><span class="ja">ページ骨格</span></td></tr>
+    <tr><td><code>table>tr*3>td*4</code></td><td><span class="ja">3行4列のテーブル</span></td></tr>
+    <tr><td><code>input[type=email]</code></td><td><code>&lt;input type="email"&gt;</code></td></tr>
+    <tr><td><code>p{Hello World}</code></td><td><code>&lt;p&gt;Hello World&lt;/p&gt;</code></td></tr>
+  </tbody>
+</table>
+
+<h2 id="editor-preview">
+  <span class="ja">プレビュー同期</span>
+  
+</h2>
+
+<p>
+  <span class="ja">プレビューでテキストを選択すると、コードエディタの該当箇所に自動でジャンプ・ハイライトされます。「このテキストはどのコードに対応しているの？」がすぐにわかります。</span>
+  
+</p>
+
+<p>
+  <span class="ja">レスポンシブプレビュー機能で、モバイル（375px）・タブレット（768px）・デスクトップ（1200px）の表示を即座に確認できます。表示メニュー → レスポンシブプレビュー から切り替えます。</span>
+  
+</p>
+
+<h2 id="editor-encoding">
+  <span class="ja">文字コード（エンコーディング）</span>
+  
+</h2>
+
+<p>
+  <span class="ja">VibeFrontは以下のエンコーディングに対応しています。ファイルを開くと自動的に文字コードを検出します。</span>
+  
+</p>
+
+<ul>
+  <li><strong>UTF-8</strong> / <strong>UTF-8 BOM</strong> — <span class="ja">新しいHTMLファイルの標準</span></li>
+  <li><strong>Shift-JIS</strong> — <span class="ja">日本語レガシーHTML</span></li>
+  <li><strong>EUC-JP</strong> — <span class="ja">日本語レガシーHTML（Unix系）</span></li>
+  <li><strong>UTF-16 LE / BE</strong> — <span class="ja">Windowsテキストファイル</span></li>
+</ul>
+
+<p>
+  <span class="ja">ステータスバーに現在のエンコーディングが表示されます。クリックするとエンコーディングの変更メニューが表示されます。</span>
+  
+</p>
+
+<!-- ==================== Shortcuts ==================== -->
+
+<h2 id="shortcuts">
+  <span class="ja">ショートカットキー</span>
+  
+</h2>
+
+<table class="model-table">
+  <thead>
+    <tr>
+      <th><span class="ja">操作</span></th>
+      <th><span class="ja">ショートカット</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td><span class="ja">新規作成</span></td><td><kbd>Ctrl</kbd>+<kbd>N</kbd></td></tr>
+    <tr><td><span class="ja">開く</span></td><td><kbd>Ctrl</kbd>+<kbd>O</kbd></td></tr>
+    <tr><td><span class="ja">保存</span></td><td><kbd>Ctrl</kbd>+<kbd>S</kbd></td></tr>
+    <tr><td><span class="ja">名前を付けて保存</span></td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd></td></tr>
+    <tr><td><span class="ja">元に戻す</span></td><td><kbd>Ctrl</kbd>+<kbd>Z</kbd></td></tr>
+    <tr><td><span class="ja">やり直し</span></td><td><kbd>Ctrl</kbd>+<kbd>Y</kbd></td></tr>
+    <tr><td><span class="ja">太字</span></td><td><kbd>Ctrl</kbd>+<kbd>B</kbd></td></tr>
+    <tr><td><span class="ja">斜体</span></td><td><kbd>Ctrl</kbd>+<kbd>I</kbd></td></tr>
+    <tr><td><span class="ja">下線</span></td><td><kbd>Ctrl</kbd>+<kbd>U</kbd></td></tr>
+    <tr><td><span class="ja">検索と置換</span></td><td><kbd>Ctrl</kbd>+<kbd>H</kbd></td></tr>
+    <tr><td><span class="ja">AIアシスタント</span></td><td><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd></td></tr>
+    <tr><td><span class="ja">Emmet展開</span></td><td><kbd>Tab</kbd></td></tr>
+  </tbody>
+</table>
+
+<!-- ==================== FAQ ==================== -->
+
+<h2 id="faq">FAQ</h2>
+
+<div class="card">
+  <h4><span class="ja">Q: AI機能は必須ですか？</span></h4>
+  <p><span class="ja">いいえ。AI設定なしでも、通常のHTMLエディタとしてすべての機能（コード編集、プレビュー、Emmet、テーマ、エンコーディング対応など）をお使いいただけます。</span></p>
+</div>
+
+<div class="card">
+  <h4><span class="ja">Q: AIのAPIキーの料金はVibeFrontの価格に含まれますか？</span></h4>
+  <p><span class="ja">いいえ。AIプロバイダーのAPI利用料は別途かかります。ただし、Google Gemini は Gemini 3.8 Flash を無料枠で使え、ローカルLLM（Ollama/LM Studio）は完全無料です。</span></p>
+</div>
+
+<div class="card">
+  <h4><span class="ja">Q: ローカルLLMでも画像→HTML変換は使えますか？</span></h4>
+  <p><span class="ja">ローカルLLMのほとんどは画像認識に対応していないため、画像→HTML変換にはGoogle Gemini、OpenAI、またはAnthropicの利用をおすすめします。</span></p>
+</div>
+
+<div class="card">
+  <h4><span class="ja">Q: データは外部に送信されますか？</span></h4>
+  <p><span class="ja">AI機能を使用した時のみ、入力テキストがお客様が選んだAIプロバイダーに送信されます。それ以外のデータ（設定、ファイル内容等）が外部に送信されることは一切ありません。ローカルLLMを使えば、AI利用時もデータは一切外部に出ません。</span></p>
+</div>
+
+<div class="card">
+  <h4><span class="ja">Q: 設定ファイルはどこに保存されますか？</span></h4>
+  <p><span class="ja"><code>%LOCALAPPDATA%\VibeFront\</code> に保存されます。Windowsのファイルエクスプローラーのアドレスバーに貼り付けると開けます。</span></p>
+</div>
+
+<div class="card">
+  <h4><span class="ja">Q: 「出力が上限に達したため、応答が途中で切れています」と表示されました</span></h4>
+  <p><span class="ja">AIが一度に出力できる量の上限に達したため、応答が最後まで生成されていません。チャットで「続けて」と送信して続きを生成させるか、依頼を小さく分けて（例: ページ全体ではなくセクションごとに）お試しください。</span></p>
+</div>
+
+<div class="card">
+  <h4><span class="ja">Q: 以前選んでいたAIモデルが一覧にありません</span></h4>
+  <p><span class="ja">v1.3.0 でAIモデルの一覧を各社の最新モデルに更新しました。提供終了・利用制限されたモデル（GPT-4o、Gemini 2.0 Flash / 2.5 など）を設定していた場合は、同じ価格帯の後継モデルへ自動で切り替わります。別のモデルを使いたい場合は、AI設定からいつでも変更できます。</span></p>
+</div>
+
+<div class="card">
+  <h4><span class="ja">Q: 「AIが安全上の理由で応答を拒否しました」と表示されました</span></h4>
+  <p><span class="ja">AIプロバイダーの安全機能が依頼内容を拒否した場合に表示されます。通常のWeb制作の依頼で表示された場合は、依頼内容を言い換えて再度お試しください。</span></p>
+</div>
+
+<div class="card">
+  <h4><span class="ja">Q: 試用期間が終了するとどうなりますか？（ダウンロード版）</span></h4>
+  <p><span class="ja">ダウンロード版は15日間お試しいただけます。試用期間の終了後も、HTMLの編集・プレビューは引き続きご利用いただけますが、ファイルの保存とAI機能はライセンスのご購入後にご利用いただけます。Microsoft Store版にはこの制限はありません。</span></p>
+</div>
+
+<!-- ==================== Support ==================== -->
+
+<h2 id="support">
+  <span class="ja">サポート</span>
+  
+</h2>
+
+<div class="card">
+  <h4><span class="ja">不具合の報告・機能のリクエスト</span></h4>
+  <p><span class="ja"><a href="mailto:support@mojosoft.biz">support@mojosoft.biz</a> までご報告ください。日本語・英語どちらでもOKです。</span></p>
+</div>
+
+<div class="card">
+  <h4><span class="ja">お問い合わせ</span></h4>
+  <p>Email: <a href="mailto:support@mojosoft.biz">support@mojosoft.biz</a></p>
+  <p>Web: <a href="https://mojosoft.biz/" target="_blank" rel="noopener">https://mojosoft.biz/</a></p>
+  <p>X (Twitter): <a href="https://x.com/mojosoft_biz" target="_blank" rel="noopener">@mojosoft_biz</a></p>
+</div>
+
+</main>
+</div>
+
+<script>
+function toggleLang(){location.href='../help.html';}
+
+// Sidebar active tracking
+var navItems=document.querySelectorAll('.sidebar .nav-item');
+var sections=[];
+navItems.forEach(function(item){
+  var href=item.getAttribute('href');
+  if(href&&href.startsWith('#')){
+    var el=document.getElementById(href.slice(1));
+    if(el)sections.push({el:el,link:item});
+  }
+});
+window.addEventListener('scroll',function(){
+  var scrollY=window.scrollY+100;
+  var active=null;
+  for(var i=sections.length-1;i>=0;i--){
+    if(sections[i].el.offsetTop<=scrollY){active=sections[i].link;break}
+  }
+  navItems.forEach(function(n){n.classList.remove('active')});
+  if(active)active.classList.add('active');
+},{passive:true});
+</script>
+
+</body>
+</html>
